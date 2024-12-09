@@ -62,7 +62,7 @@
                                                 <div class="flex flex-col justify-center items-center ">
 
                                                     <h1 class="text-white font-bold text-[16px]">
-                                                        {{ (new DateTime($item->date))->format('H:m') }}
+                                                        {{ (new DateTime($item->time))->format('H:m') }}
                                                     </h1>
                                                     </h1>
                                                     <h1 class="text-white font-bold text-[12px]">

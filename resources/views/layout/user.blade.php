@@ -68,10 +68,13 @@
                 <ul
                     class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
                     <li>
-                        <a href="#" class="hover:underline hover:text-white me-4 md:me-6">About Us</a>
+                        <a href="{{ route('about.us') }}" class="hover:underline hover:text-white me-4 md:me-6">About
+                            Us</a>
                     </li>
                     <li>
-                        <a href="#" class="hover:underline hover:text-white me-4 md:me-6">Privacy Policy</a>
+                        <a href="{{ route('privacy.policy') }}"
+                            class="hover:underline hover:text-white me-4 md:me-6">Privacy
+                            Policy</a>
                     </li>
                 </ul>
             </div>

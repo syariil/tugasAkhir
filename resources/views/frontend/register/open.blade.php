@@ -10,7 +10,7 @@
         <div id="step-one-register" class="block relative animate-jump-in">
             <x-heading name="data team" margin="0" />
             @if ($data = Session::get('success'))
-                <div class="flex items-center p-4 mb-4 text-sm text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800"
+                <div class="flex items-center p-4 mb-4 text-sm text-green-800 border border-green-300 rounded-lg bg-green-50"
                     role="alert">
                     <x-uiw-notification class="w-6" />
                     <span class="sr-only">Info</span>
@@ -112,18 +112,20 @@
                         <input type="text" name="nickname1" value="{{ old('nickname1') }}"
                             class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
                             placeholder="Nickname player 1" />
-                        @error('nickname1')
-                            <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
-                        @enderror
                         {{-- </div> --}}
                         {{-- <div class="flex flex-col justify-center"> --}}
                         <input type="number" name="id_nickname1" value="{{ old('id_nickname1') }}"
                             class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
                             placeholder="id player 1" />
+                        {{-- </div> --}}
+                    </div>
+                    <div class="flex md:flex-row flex-col justify-between">
+                        @error('nickname1')
+                            <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
+                        @enderror
                         @error('id_nickname1')
                             <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
                         @enderror
-                        {{-- </div> --}}
                     </div>
                 </div>
                 <div class="md:mb-3 mb-5 w-full">
@@ -135,18 +137,18 @@
                         <input type="text" name="nickname2" value="{{ old('nickname2') }}"
                             class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
                             placeholder="Nickname player 2" />
-                        @error('nickname2')
-                            <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
-                        @enderror
-                        {{-- </div> --}}
-                        {{-- <div class="flex flex-col justify-center"> --}}
                         <input type="number" name="id_nickname2" value="{{ old('id_nickname2') }}"
                             class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
                             placeholder="id player 2" />
+                        {{-- </div> --}}
+                    </div>
+                    <div class="flex md:flex-row flex-col justify-between">
+                        @error('nickname2')
+                            <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
+                        @enderror
                         @error('id_nickname2')
                             <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
                         @enderror
-                        {{-- </div> --}}
                     </div>
                 </div>
                 <div class="md:mb-3 mb-5 w-full">
@@ -158,18 +160,19 @@
                         <input type="text" name="nickname3" value="{{ old('nickname3') }}"
                             class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
                             placeholder="Nickname player 3" />
-                        @error('nickname3')
-                            <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
-                        @enderror
-                        {{-- </div> --}}
-                        {{-- <div class="flex flex-col justify-center"> --}}
+
                         <input type="number" name="id_nickname3" value="{{ old('id_nickname3') }}"
                             class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
                             placeholder="id player 3" />
+                        {{-- </div> --}}
+                    </div>
+                    <div class="flex md:flex-row flex-col justify-between">
+                        @error('nickname3')
+                            <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
+                        @enderror
                         @error('id_nickname3')
                             <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
                         @enderror
-                        {{-- </div> --}}
                     </div>
                 </div>
                 <div class="md:mb-3 mb-5 w-full">
@@ -181,18 +184,18 @@
                         <input type="text" name="nickname4" value="{{ old('nickname4') }}"
                             class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
                             placeholder="Nickname player 4" />
-                        @error('nickname4')
-                            <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
-                        @enderror
-                        {{-- </div> --}}
-                        {{-- <div class="flex flex-col justify-center"> --}}
                         <input type="number" name="id_nickname4" value="{{ old('id_nickname4') }}"
                             class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
                             placeholder="id player 4" />
+                        {{-- </div> --}}
+                    </div>
+                    <div class="flex md:flex-row flex-col justify-between">
+                        @error('nickname4')
+                            <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
+                        @enderror
                         @error('id_nickname4')
                             <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
                         @enderror
-                        {{-- </div> --}}
                     </div>
                 </div>
                 <div class="md:mb-3 mb-5 w-full">
@@ -204,18 +207,20 @@
                         <input type="text" name="nickname5" value="{{ old('nickname5') }}"
                             class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
                             placeholder="Nickname player 5" />
-                        @error('nickname5')
-                            <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
-                        @enderror
                         {{-- </div> --}}
                         {{-- <div class="flex flex-col justify-center"> --}}
                         <input type="number" name="id_nickname5" value="{{ old('id_nickname5') }}"
                             class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
                             placeholder="id player 5" />
+                        {{-- </div> --}}
+                    </div>
+                    <div class="flex md:flex-row flex-col justify-between">
+                        @error('nickname5')
+                            <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
+                        @enderror
                         @error('id_nickname5')
                             <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
                         @enderror
-                        {{-- </div> --}}
                     </div>
                 </div>
                 <div class="md:mb-3 mb-5 w-full">
@@ -227,20 +232,40 @@
                         <input type="text" name="nickname6" value="{{ old('nickname6') }}"
                             class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
                             placeholder="Nickname player 6" />
-                        @error('nickname6')
-                            <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
-                        @enderror
                         {{-- </div> --}}
                         {{-- <div class="flex flex-col justify-center"> --}}
                         <input type="number" name="id_nickname6" value="{{ old('id_nickname6') }}"
                             class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
                             placeholder="id player 6" />
+                    </div>
+                    <div class="flex md:flex-row flex-col justify-between">
+                        @error('nickname6')
+                            <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
+                        @enderror
                         @error('id_nickname6')
                             <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
                         @enderror
-                        {{-- </div> --}}
                     </div>
                 </div>
+                <div class="flex items-center mb-4">
+                    <input id="default-checkbox" type="checkbox" value="1" required
+                        class="w-4 h-4 text-red-600  rounded  focus:ring-red-600 ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600">
+                    <label for="default-checkbox" class="ms-2 text-sm font-medium  text-gray-300">
+                        saya setuju dengan kebijakan <a href="{{ route('privacy.policy') }}" target="_blank"
+                            class="text-red-600">privasy policy</a>
+                        turnamen.
+                    </label>
+                </div>
+                <div class="flex items-center">
+                    <input checked id="checked-checkbox" type="checkbox" value="1" required
+                        class="w-4 h-4 text-red-600  rounded  focus:ring-red-600 ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600">
+                    <label for="checked-checkbox" class="ms-2 text-sm font-medium  text-gray-300">
+                        Saya sudah membaca <a href="{{ route('peraturan') }}" target="_blank"
+                            class="text-red-600">peraturan</a>
+                        turnamen
+                    </label>
+                </div>
+
             </div>
         </div>
         {{-- end step two register --}}

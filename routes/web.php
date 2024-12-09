@@ -30,7 +30,15 @@ use Livewire\Livewire;
 */
 
 
-// Route::get()
+Route::get('/about-us', function () {
+    return view('frontend.aboutUs');
+})->name('about.us');
+Route::get('/privacy-policy', function () {
+    return view('frontend.privasyPolicy');
+})->name('privacy.policy');
+Route::get('/peraturan', function () {
+    return view('frontend.peraturan');
+})->name('peraturan');
 
 
 // frontend
