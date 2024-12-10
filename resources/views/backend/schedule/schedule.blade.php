@@ -1,7 +1,7 @@
 @extends('layout.admin')
 @section('title', 'Schedule')
 @section('content')
-    <div class="p-4 mt-14">
+    <div class="p-0 md:p-4 mt-14">
         <div class="w-full min-h-screen bg-gray-800 rounded-3xl">
             <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
                 <!-- Breadcrumb Start -->
@@ -22,7 +22,7 @@
                 @endif
                 <div class="w-full flex flex-col justify-end items-center mb-2">
                     <div class="flex w-full justify-end flex-col">
-                        <div class="flex justify-end md:flex-row flex-col gap-4 md:gap-0 ">
+                        <div class="flex md:justify-between  md:flex-row flex-col-reverse gap-4 md:gap-0 ">
                             <div class="flex justify-start">
                                 <button data-modal-target="schedule-add" data-modal-toggle="schedule-add"
                                     class=" flex flex-row text-white  focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-1.5 md:px-3 py-2 md:py-2.5 text-center bg-red-600 hover:bg-red-700 focus:ring-red-800 items-center"
@@ -34,20 +34,21 @@
                                 </button>
 
                             </div>
-                            <form action="{{ route('schedule.admin') }}" method="GET" class="flex flex-row">
-                                <div class="flex justify-end">
-                                    <div class="flex justify-end mx-0 md:mx-2">
+                            <form action="{{ route('schedule.admin') }}" method="GET"
+                                class="flex flex-row w-full justify-end">
+                                <div class="flex justify-end md:flex-row flex-col gap-2 md:gap-0">
+                                    <div class="flex justify-start mx-0 md:mx-2 w-full">
                                         <select name="tim"
-                                            class="bg-gray-800 text-white p-1 rounded focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent">
+                                            class="bg-gray-800 text-white p-1 rounded focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent w-full">
                                             <option value="">tim</option>
                                             @foreach ($squads as $item)
                                                 <option value="{{ $item->id }}">{{ $item->squad }}</option>
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="flex justify-center mx-2">
+                                    <div class="flex justify-start mx-0 md:mx-2">
                                         <select name="day"
-                                            class="bg-gray-800 text-white p-1 rounded focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent">
+                                            class="bg-gray-800 text-white p-1 rounded focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent w-full md:w-auto">
                                             <option value="">day</option>
                                             @for ($i = 1; $i < 11; $i++)
                                                 <option value="{{ $i }}">{{ $i }}</option>

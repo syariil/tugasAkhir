@@ -1,7 +1,7 @@
 @extends('layout.admin')
 @section('title', 'Tim')
 @section('content')
-    <div class="p-4 mt-14">
+    <div class="md:p-4 mt-14">
         <section class="bg-gray-800 w-full p-1 sm:p-5">
             <h1 class="text-white font-poppins text-[24px] border-x-black border-b-2 uppercase font-bold">
                 Tim List

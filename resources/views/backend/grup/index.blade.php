@@ -1,5 +1,5 @@
 @extends('layout.admin')
-@section('title', 'Standing')
+@section('title', 'grup')
 @section('content')
     <div class="mt-14 p-2">
         <div class="w-full bg-gray-800 rounded-3xl">

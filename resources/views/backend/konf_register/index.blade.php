@@ -1,5 +1,5 @@
 @extends('layout.admin')
-@section('title', 'Tim')
+@section('title', 'registration')
 @section('content')
     <div class="p-4 mt-14">
         <div class="w-full bg-gray-800 rounded-3xl">
@@ -30,63 +30,61 @@
                         </div>
                     </div>
                 @endif
-                <div class="w-full flex justify-center">
-                    <table class="w-full p-0 md:px-6 text-sm text-left rtl:text-righttext-gray-200 rounded-t-full">
-                        <thead class="text-xs uppercase bg-red-700 text-white ">
-                            <tr>
-                                <th scope="col" class="px-3 md:px-6 py-3">
-                                    No
+                <table class="w-full  text-sm text-left rounded-t-full text-gray-500 overflow-x-auto">
+                    <thead class="text-xs uppercase bg-red-700 text-white ">
+                        <tr>
+                            <th scope="col" class="px-3 md:px-6 py-3">
+                                No
+                            </th>
+                            <th scope="col" class="px-3 md:px-6 py-3">
+                                Team
+                            </th>
+                            <th scope="col" class="px-3 md:px-6 py-3">
+                                Nomor Wahtsapp
+                            </th>
+                            <th scope="col" class="px-3 md:px-6 py-3">
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @php
+                            $no = 1;
+                        @endphp
+                        @foreach ($data as $tim)
+                            <tr class=" border-b bg-gray-900 border-gray-700">
+                                <th scope="row" class="px-3 md:px-6 py-4 text-gray-200">
+                                    {{ $no }}
                                 </th>
-                                <th scope="col" class="px-3 md:px-6 py-3">
-                                    Team
-                                </th>
-                                <th scope="col" class="px-3 md:px-6 py-3">
-                                    Nomor Wahtsapp
-                                </th>
-                                <th scope="col" class="px-3 md:px-6 py-3">
-                                    Action
-                                </th>
+                                <td class="px-3 md:px-6 py-4 font-medium  uppercase whitespace-nowrap text-white">
+                                    {{ $tim->squad }}
+                                </td>
+                                <td class="px-3 md:px-6 py-4 font-medium  uppercase whitespace-nowrap text-white">
+                                    {{ $tim->no_whatsapp }}
+                                </td>
+                                <td class="py-4 px-2 md:px-6 flex flex-row gap-2">
+                                    <button data-modal-target="tim-view{{ $tim->id }}"
+                                        data-modal-toggle="tim-view{{ $tim->id }}"
+                                        class="font-medium text-white bg-green-500 hover:underline px-2 py-1 rounded-3xl">
+                                        <x-uiw-eye class="w-5" />
+                                    </button>
+                                    <button data-modal-target="tim-aprove{{ $tim->id }}"
+                                        data-modal-toggle="tim-aprove{{ $tim->id }}"
+                                        class="font-medium text-white bg-blue-500 hover:underline px-2 py-1 rounded-3xl">
+                                        <x-uiw-circle-check class="w-5" />
+                                    </button>
+
+                                    <button data-modal-target="tim-delete{{ $tim->id }}"
+                                        data-modal-toggle="tim-delete{{ $tim->id }}"
+                                        class="font-medium text-white px-2 py-1 rounded-3xl bg-red-600 hover:underline">
+                                        <x-uiw-close class="w-5" />
+                                    </button>
+
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            @php
-                                $no = 1;
-                            @endphp
-                            @foreach ($data as $tim)
-                                <tr class=" border-b bg-gray-900 border-gray-700">
-                                    <th scope="row" class="px-3 md:px-6 py-4 text-gray-200">
-                                        {{ $no }}
-                                    </th>
-                                    <td class="px-3 md:px-6 py-4 font-medium  uppercase whitespace-nowrap text-white">
-                                        {{ $tim->squad }}
-                                    </td>
-                                    <td class="px-3 md:px-6 py-4 font-medium  uppercase whitespace-nowrap text-white">
-                                        {{ $tim->no_whatsapp }}
-                                    </td>
-                                    <td class="py-4 px-2 md:px-6 flex flex-row gap-2">
-                                        <button data-modal-target="tim-view{{ $tim->id }}"
-                                            data-modal-toggle="tim-view{{ $tim->id }}"
-                                            class="font-medium text-white bg-green-500 hover:underline px-2 py-1 rounded-3xl">
-                                            <x-uiw-eye class="w-5" />
-                                        </button>
-                                        <button data-modal-target="tim-aprove{{ $tim->id }}"
-                                            data-modal-toggle="tim-aprove{{ $tim->id }}"
-                                            class="font-medium text-white bg-blue-500 hover:underline px-2 py-1 rounded-3xl">
-                                            <x-uiw-circle-check class="w-5" />
-                                        </button>
-
-                                        <button data-modal-target="tim-delete{{ $tim->id }}"
-                                            data-modal-toggle="tim-delete{{ $tim->id }}"
-                                            class="font-medium text-white px-2 py-1 rounded-3xl bg-red-600 hover:underline">
-                                            <x-uiw-close class="w-5" />
-                                        </button>
-
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
 

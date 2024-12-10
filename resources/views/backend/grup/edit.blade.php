@@ -1,5 +1,5 @@
 @extends('layout.admin')
-@section('title', 'system')
+@section('title', 'grup')
 @section('content')
     <div class="mt-14 p-2">
         <section class="bg-gray-800  p-3 sm:p-5 min-h-screen">

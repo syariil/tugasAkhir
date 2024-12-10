@@ -1,5 +1,5 @@
 @extends('layout.user')
-@section('title', 'Close Registration')
+@section('title', 'schedule')
 @section('content')
 
     <div class="w-full p-2 h-screen flex justify-center items-center flex-col">

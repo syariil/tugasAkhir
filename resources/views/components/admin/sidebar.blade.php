@@ -28,7 +28,7 @@
                             class="flex text-sm bg-gray-900  text-white font-poppins focus:ring-4  focus:ring-gray-600 py-3 px-4 rounded-lg"
                             aria-expanded="false" data-dropdown-toggle="dropdown-user">
                             <span class="sr-only">Open user menu</span>
-                            {{ Auth::user()->nama }}
+                            {{ Auth::user()->username }}
                         </button>
                     </div>
                     <div class="z-50 hidden my-4 text-base list-none  divide-y  rounded shadow bg-gray-700 divide-gray-600"
