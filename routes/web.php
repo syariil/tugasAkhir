@@ -1,22 +1,20 @@
 <?php
 
-use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\GrupController;
 use App\Http\Controllers\Backend\HighlightController;
 use App\Http\Controllers\Backend\ProfileContorller;
-use App\Http\Controllers\backend\ScheduleController as BackendScheduleController;
+use App\Http\Controllers\Backend\ScheduleController as BackendScheduleController;
 use App\Http\Controllers\Backend\StandingController;
-use App\Http\Controllers\backend\SystemController;
+use App\Http\Controllers\Backend\SystemController;
 use App\Http\Controllers\Backend\TestController;
-use App\Http\Controllers\backend\TimController;
+use App\Http\Controllers\Backend\TimController;
 use App\Http\Controllers\Frontend\HomeController;
-use App\Http\Controllers\frontend\RegisterController;
+use App\Http\Controllers\Frontend\RegisterController;
 use App\Http\Controllers\Frontend\ScheduleController;
 use App\Http\Controllers\login\LoginController;
-use App\Http\Controllers\RegistrationController;
-use App\Models\Registration;
 use Illuminate\Support\Facades\Route;
-use Livewire\Livewire;
+
 
 /*
 |--------------------------------------------------------------------------

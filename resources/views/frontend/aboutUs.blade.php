@@ -6,21 +6,21 @@
         <div class="min-h-screen bg-gray-900 text-white mt-4">
             <div class="container mx-auto py-10">
                 <!-- Header -->
-                <div class="flex items-center justify-between mb-8 py-4">
+                <div class="flex items-center justify-between mb-8">
                     <div>
                         <h1 class="text-4xl font-bold font-kodeMono">Kabaena<span class="text-red-600">Cup</span></h1>
                         <p class="text-gray-400 mt-2">
                             Kabaena Cup adalah turnamen E-sport Mobile Legends Bang Bang
                         </p>
                     </div>
-                    <div class="py-6">
+                    <div>
                         <img src="{{ asset('storage/image/logo1.png') }}" alt="Logo Turnamen"
-                            class="max-w-10 max-h-10 rounded-full border-2 object-fill border-gray-700">
+                            class="md:w-[150px] w-20 h-20 md:h-[150px] rounded-full border-2 object-fill border-gray-700">
                     </div>
                 </div>
 
                 <!-- Info Utama -->
-                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <div class="grid md:grid-row-2 gap-6 mb-8">
                     <div class="p-6 bg-gray-800 rounded-lg">
                         <h2 class="text-lg font-semibold">Didirikan</h2>
                         <p class="text-gray-400">27 april 2019</p>
@@ -40,7 +40,7 @@
                             class="flex flex-col justify-center items-center bg-gray-700 p-4 rounded-lg w-full md:max-w-[430px]">
                             <img src="{{ asset('storage/image/R.png') }}" alt="Avatar"
                                 class="w-[72px] object-contain rounded-full border-2 border-gray-600 mr-4">
-                            <h3 class="font-medium">M Riski D</h3>
+                            <h3 class="font-medium">M. Riski D.</h3>
                         </div>
 
                         <div
@@ -51,7 +51,8 @@
                         </div>
                     </div>
                     <div class="flex justify-center items-center py-2">
-                        <div class="flex flex-col justify-center items-center bg-gray-700 p-4 rounded-lg w-full">
+                        <div
+                            class="flex flex-col justify-center items-center bg-gray-700 p-4 rounded-lg w-full md:max-w-[430px]">
                             <img src="{{ asset('storage/image/S.png') }}" alt="Avatar"
                                 class="w-[72px] object-contain rounded-full border-2 border-gray-600 mr-4">
                             <h3 class="font-medium">M. Syahril</h3>

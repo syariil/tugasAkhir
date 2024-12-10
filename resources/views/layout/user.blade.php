@@ -27,7 +27,13 @@
                     kabaena<span class="text-red-600 font-kodeMono">CUP</span></span>
                 </span>
             </a>
-            <div class="block w-auto" id="navbar-default">
+            <button data-collapse-toggle="navbar-default" type="button"
+                class="md:hidden inline-flex items-center p-2 w-10 h-10 justify-center text-sm  rounded-lg  focus:outline-none focus:ring-2  text-gray-400 hover:bg-red-700 focus:ring-red-600"
+                aria-controls="navbar-default" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <x-uiw-menu class="w-5 text-gray-400" />
+            </button>
+            <div class="md:block w-full hidden md:w-auto" id="navbar-default">
                 <ul class="font-medium flex flex-row  p-0 mt-0  rounded-lg space-x-0 md:space-x-8">
                     <li>
                         <a href="{{ url('/') }}"
