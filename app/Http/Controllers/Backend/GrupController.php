@@ -11,7 +11,8 @@ class GrupController extends Controller
 {
     public function index()
     {
-        $grups = DB::select('select id,season, grup from grups');
+        $season = DB::select('select season from systems limit 1');
+        $grups = DB::select('select id,season, grup from grups where season = ?', [$season[0]->season]);
         return view('backend.grup.index', ['grups' => $grups]);
     }
 

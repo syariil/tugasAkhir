@@ -27,7 +27,7 @@
                         data-tabs-toggle="#schedule1"
                         data-tabs-active-classes="hover:text-red-600 text-red-500 hover:text-red-500 border-red-600 border-red-500"
                         role="tablist">
-                        @for ($i = 1; $i <= $day[0]->day; $i++)
+                        @for ($i = 1; $i <= $day; $i++)
                             <li class="me-2" role="presentation">
                                 <button class="inline-block p-4 border-b-2 rounded-t-lg" id="regular-styled-tab"
                                     data-tabs-target="#day{{ $i }}" type="button" role="tab"
@@ -37,7 +37,7 @@
                     </ul>
                 </div>
                 <div id="schedule1">
-                    @for ($i = 1; $i <= $day[0]->day; $i++)
+                    @for ($i = 1; $i <= $day; $i++)
                         <div class="p-4 rounded-lg   w-full flex flex-wrap flex-col md:flex-row justify-start gap-2"
                             id="day{{ $i }}" role="tabpanel" aria-labelledby="regular-tab">
                             @foreach ($schedules as $item)

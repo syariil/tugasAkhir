@@ -12,73 +12,7 @@ class StandingController extends Controller
 {
     public function index(Request $request)
     {
-        //     $standings = DB::select('select standings.id, standings.id_tim, standings.id_grup, tims.squad , tims.season ,grups.grup, grups.id from standings INNER JOIN tims ON tims.id = standings.id_tim INNER JOIN grups on grups.id = standings.id_grup');
-        //     $season = DB::select('select season from systems');
-        //     $season = $season[0]->season;
 
-        //     $grups = DB::select('select id, grup, season from grups where season = ?', [$season]);
-        //     $tims = DB::select('select id, squad from tims where season = ?', [$season]);
-
-
-        //     $arrayGrup = [];
-        //     $arrayTim = [];
-
-        //     // Iterasi setiap grup
-        //     foreach ($grups as $grup) {
-        //         $grupId = $grup->id;
-
-        //         // Tambahkan nama grup ke array grup
-        //         $arrayGrup[] = [
-        //             'id_grup' => $grup->id,
-        //             'grup' => $grup->grup,
-        //             'season' => $grup->season,
-        //         ];
-
-        //         // Cari tim-tim dalam grup ini berdasarkan standings
-        //         $timInGroup = array_filter($standings, function ($standing) use ($grupId) {
-        //             return $standing->id_grup == $grupId;
-        //         });
-
-        //         // Ambil daftar nama tim dari standings
-        //         $timNames = array_map(function ($standing) {
-        //             return [
-        //                 'id_tim' => $standing->id_tim,
-        //                 'squad' => $standing->squad,
-        //                 'id_grup' => $standing->id_grup,
-        //             ];
-        //         }, $timInGroup);
-
-        //         // Tambahkan daftar tim ke array tim
-        //         $arrayTim[] = $timNames;
-        //     }
-        //     return view('backend.standing.index', ['arrayTim' => $arrayTim, 'grup' => $arrayGrup, 'tims' => $tims]);
-        // }
-
-        // public function store(Request $request)
-        // {
-        //     // Validasi input
-        //     // dump($request);
-        //     $validated = $request->validate([
-        //         'matches.*.id_grup' => 'required|integer',
-        //         'matches.*.id_tim' => 'required|integer',
-        //     ]);
-
-        //     $season = DB::select('select season from systems limit 1');
-        //     $season = $season[0]->season;
-
-        //     foreach ($validated['matches'] as $match) {
-        //         Standings::create([
-        //             'id_grup' => $match['id_grup'],
-        //             'id_tim' => $match['id_tim'],
-        //             'game' => 0,
-        //             'win' => 0,
-        //             'lose' => 0,
-        //             'winrate' => 0,
-        //             'poin' => 0,
-        //         ]);
-        //     }
-
-        //     return redirect()->route('standing.index')->with('success', 'standing add successfully!');
         // Ambil filter season dari request
         $selectedSeason = $request->input('season');
 

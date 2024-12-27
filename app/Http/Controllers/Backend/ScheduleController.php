@@ -15,6 +15,10 @@ class ScheduleController extends Controller
         $tim = $request->input('tim');
         $day = $request->input('day');
 
+        // ambil season
+        $season = DB::select("select season from systems");
+        $season = $season[0]->season;
+
         // Query schedule dengan filter
         $query = DB::table('schedules')
             ->select(
@@ -25,7 +29,7 @@ class ScheduleController extends Controller
                 'timB.logo as logoB'
             )
             ->join('tims as timA', 'timA.id', '=', 'schedules.id_timA')
-            ->join('tims as timB', 'timB.id', '=', 'schedules.id_timB')->orderBy('schedules.id', 'desc');
+            ->join('tims as timB', 'timB.id', '=', 'schedules.id_timB')->orderBy('schedules.id', 'desc')->where('timA.season', '=', $season)->orWhere('timB.season', '=', $season);
 
         // Terapkan filter season
         if (!empty($tim)) {
@@ -54,11 +58,6 @@ class ScheduleController extends Controller
             'seasons' => $seasons,
             'squads' => $squads,
         ]);
-
-        // $schedule = DB::select("select schedules.*, timA.short_squad as timA, timB.short_squad as timB, timA.logo as logoA, timB.logo as logoB from schedules inner join tims as timA on timA.id = schedules.id_timA inner join tims as timB on timB.id = schedules.id_timB");
-        // $season = DB::select('select season from systems limit 1');
-        // $squad = DB::select('select id,squad from tims where season = ?', [$season[0]->season]);
-        // return view('backend.schedule.schedule', ['squad' => $squad, 'schedule' => $schedule]);
     }
 
     public function store(Request $request)
@@ -111,66 +110,80 @@ class ScheduleController extends Controller
 
     public function update(Request $request, Schedule $id)
     {
-        $babak = DB::select('select babak from systems limit 1');
-        $babak = $babak[0]->babak;
-        // dd($request);
+        $system = DB::selectOne('select babak, season, poin from systems limit 1');
+        $babak = $system->babak;
+        $season = $system->season;
+        $poin = $system->poin;
+
+        // Validasi input
         $input = $request->validate([
             'scoreA' => 'required|integer|min:0',
             'scoreB' => 'required|integer|min:0',
-            'statusA' => 'string|nullable|in:win,lose',
-            'statusB' => 'string|nullable|in:win,lose',
+            'statusA' => 'nullable|string|in:win,lose',
+            'statusB' => 'nullable|string|in:win,lose',
             'day' => 'required|integer|max:10',
             'time' => 'required',
             'date' => 'required|date',
         ]);
-        if ($babak == 'regular') {
-            // update poin tim
-            $timA = DB::select('select * from standings where id_tim = ?', [$id->id_timA]);
-            $timB = DB::select('select * from standings where id_tim = ?', [$id->id_timB]);
-            $poin = DB::select("select poin from systems limit 1");
-            $poin = $poin[0]->poin;
-            if ($input['statusA'] != null) {
-                // tim A
-                if ($input['statusA'] == 'win') {
-                    $timA[0]->poin += $poin;
-                    $timA[0]->game += 1;
-                    $timA[0]->win += 1;
-                    $timA[0]->winrate += (($timA[0]->win / $timA[0]->game) * 100);
-                    // dd($timA);
-                    DB::update('update standings set poin = ?, game = ?, win = ?, winrate = ? where id_tim = ?', [$timA[0]->poin, $timA[0]->game, $timA[0]->win, $timA[0]->winrate, $timA[0]->id]);
-                } else {
-                    $timA[0]->game += 1;
-                    $timA[0]->lose += 1;
-                    $timA[0]->winrate -= (($timA[0]->win / $timA[0]->game) * 100);
-                    // dd($timA);
-                    DB::update('update standings set game = ?, lose = ?, winrate = ? where id_tim
-                    = ?', [$timA[0]->game, $timA[0]->lose, $timA[0]->winrate, $timA[0]->id]);
+
+        if ($babak === 'regular') {
+            // Update standings timA
+            $timA = DB::selectOne('select * from standings where id_tim = ?', [$id->id_timA]);
+            $timB = DB::selectOne('select * from standings where id_tim = ?', [$id->id_timB]);
+
+            if ($input['statusA'] !== null) {
+                $timA->game += 1;
+
+                if ($input['statusA'] === 'win') {
+                    $timA->poin += $poin;
+                    $timA->win += 1;
+                } elseif ($input['statusA'] === 'lose') {
+                    $timA->lose += 1;
                 }
-                // tim B
+
+                $timA->winrate = $timA->game > 0 ? ($timA->win / $timA->game) * 100 : 0;
+
+                DB::update('update standings set poin = ?, game = ?, win = ?, lose = ?, winrate = ? where id_tim = ?', [
+                    $timA->poin,
+                    $timA->game,
+                    $timA->win,
+                    $timA->lose,
+                    $timA->winrate,
+                    $timA->id_tim,
+                ]);
             }
-            if ($input['statusB'] != null) {
-                if ($input['statusB'] == 'win') {
-                    $timB[0]->poin += $poin;
-                    $timB[0]->game += 1;
-                    $timB[0]->win += 1;
-                    $timB[0]->winrate += (($timB[0]->win / $timB[0]->game) * 100);
-                    // dd($timB);
-                    DB::update('update standings set poin = ?, game = ?, win = ?, winrate = ? where id_tim = ?', [$timB[0]->poin, $timB[0]->game, $timB[0]->win, $timB[0]->winrate, $timB[0]->id]);
-                } elseif ($input['statusB'] == 'lose') {
-                    $timB[0]->game += 1;
-                    $timB[0]->lose += 1;
-                    $timB[0]->winrate -= (($timB[0]->win / $timB[0]->game) * 100);
-                    // dd($timB);
-                    DB::update('update standings set game = ?, lose = ?, winrate = ? where id_tim
-                    = ?', [$timB[0]->game, $timB[0]->lose, $timB[0]->winrate, $timB[0]->id]);
+
+            // Update standings timB
+            if ($input['statusB'] !== null) {
+                $timB->game += 1;
+
+                if ($input['statusB'] === 'win') {
+                    $timB->poin += $poin;
+                    $timB->win += 1;
+                } elseif ($input['statusB'] === 'lose') {
+                    $timB->lose += 1;
                 }
+
+                $timB->winrate = $timB->game > 0 ? ($timB->win / $timB->game) * 100 : 0;
+
+                DB::update('update standings set poin = ?, game = ?, win = ?, lose = ?, winrate = ? where id_tim = ?', [
+                    $timB->poin,
+                    $timB->game,
+                    $timB->win,
+                    $timB->lose,
+                    $timB->winrate,
+                    $timB->id_tim,
+                ]);
             }
         }
+
+        // Update schedule
         $input['time'] = (new \DateTime($input['time']))->format('H:i');
         $id->fill($input)->save();
 
-        return redirect()->route('schedule.admin')->with('success', 'schedule update successfully!');
+        return redirect()->route('schedule.admin')->with('success', 'Schedule updated successfully!');
     }
+
 
     public function delete(Schedule $id)
     {
