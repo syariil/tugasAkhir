@@ -38,57 +38,55 @@
                 </div>
                 <div id="schedule1">
                     @for ($i = 1; $i <= $day; $i++)
-                        <div class="p-4 rounded-lg   w-full flex flex-wrap flex-col md:flex-row justify-start gap-2"
-                            id="day{{ $i }}" role="tabpanel" aria-labelledby="regular-tab">
-                            @foreach ($schedules as $item)
-                                @if ($i == $item->day)
-                                    <div
-                                        class="w-full md:max-w-[320px] flex flex-col border-gray-700 bg-gray-700 shadow-xl shadow-gray-800/100 rounded-xl border-2 py-2 md:py-4">
-                                        <div class="  flex  flex-row justify-between items-center py-2 px-2 gap-2">
-                                            {{-- team 1 --}}
-                                            <div class="flex flex-col justify-center items-center max-w-[240px]">
-                                                <img src="{{ asset('storage/image/logo/' . $item->logoA) }}" alt="logo "
-                                                    class=" w-[72px]  md:w-[90px]  rounded-full object-contain mb-1">
-                                                <h2
-                                                    class="font-kodeMono font-bold text-[18px] text-center uppercase text-white ">
-                                                    {{ $item->timA }}
-                                                </h2>
-                                            </div>
-                                            {{-- time --}}
-                                            <div class="flex flex-row justify-between gap-6 items-center">
-                                                <h1 class="font-kodeMono font-extrabold text-red-600 text-5xl">
-                                                    {{ $item->scoreA }}
-                                                </h1>
-                                                <div class="flex flex-col justify-center items-center ">
-
-                                                    <h1 class="text-white font-bold text-[16px]">
-                                                        {{ (new DateTime($item->time))->format('H:m') }}
-                                                    </h1>
-                                                    </h1>
-                                                    <h1 class="text-white font-bold text-[12px]">
-                                                        {{ (new DateTime($item->date))->format('d M') }}
-                                                    </h1>
-                                                </div>
-                                                <h1 class="font-kodeMono font-extrabold text-red-600 text-5xl">
-                                                    {{ $item->scoreB }}
-                                                </h1>
-                                            </div>
-                                            {{-- team 2 --}}
-                                            <div class="flex flex-col justify-center items-center max-w-[240px]">
-                                                <img src="{{ asset('storage/image/logo/' . $item->logoB) }}" alt="logo "
-                                                    class=" w-[72px]  md:w-[90px]  rounded-full object-contain mb-1">
-                                                <h2
-                                                    class="font-kodeMono font-bold text-[18px] text-center uppercase text-white ">
-                                                    {{ $item->timB }}
-                                                </h2>
-                                            </div>
-                                            {{-- end of one match --}}
+                    <div class="p-4 rounded-lg   w-full flex flex-wrap flex-col md:flex-row justify-center items-center gap-2"
+                        id="day{{ $i }}" role="tabpanel" aria-labelledby="regular-tab">
+                        @foreach ($schedules as $item)
+                            @if ($i == $item->day)
+                                <div class="w-full md:max-w-[360px] flex flex-col border-gray-700 bg-gray-700 shadow-xl shadow-gray-800/100 rounded-xl border-2 py-2 md:py-4">
+                                    <div class="  flex  flex-row justify-between items-center py-2 px-2 gap-2">
+                                        {{-- team 1 --}}
+                                        <div class="flex flex-col justify-center items-center max-w-[240px]">
+                                            <img src="{{ asset('storage/image/logo/' . $item->logoA) }}" alt="logo "
+                                                class=" w-[72px]  md:w-[90px]  rounded-full object-contain mb-1">
+                                            <h2
+                                                class="font-kodeMono font-bold text-[18px] text-center uppercase text-white ">
+                                                {{ $item->timA }}
+                                            </h2>
                                         </div>
+                                        {{-- time --}}
+                                        <div class="flex flex-row justify-around gap-2 items-center">
+                                            <h1 class="font-kodeMono font-extrabold text-red-600 text-5xl">
+                                                {{ $item->scoreA }}
+                                            </h1>
+                                            <div class="flex flex-col justify-center items-center p-2">
+                                                <h1 class="text-white font-bold text-[16px]">
+                                                    {{ (new DateTime($item->time))->format('H:i') }}
+                                                </h1>
+                                                
+                                                <h1 class="text-white font-bold text-[12px] truncate text-center">
+                                                    {{ (\Carbon\Carbon::parse($item->date)->translatedFormat('d F Y')) }}
+                                                </h1>
+                                            </div>
+                                            <h1 class="font-kodeMono font-extrabold text-red-600 text-5xl">
+                                                {{ $item->scoreB }}
+                                            </h1>
+                                        </div>
+                                        {{-- team 2 --}}
+                                        <div class="flex flex-col justify-center items-center max-w-[240px]">
+                                            <img src="{{ asset('storage/image/logo/' . $item->logoB) }}" alt="logo "
+                                                class=" w-[72px]  md:w-[90px]  rounded-full object-contain mb-1">
+                                            <h2
+                                                class="font-kodeMono font-bold text-[18px] text-center uppercase text-white ">
+                                                {{ $item->timB }}
+                                            </h2>
+                                        </div>
+                                        {{-- end of one match --}}
                                     </div>
-                                @endif
-                            @endforeach
-                        </div>
-                    @endfor
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                @endfor
                 </div>
             </div>
 

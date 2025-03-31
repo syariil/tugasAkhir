@@ -18,7 +18,7 @@
 
 <body class="bg-gray-900">
     <nav
-        class="bg-gray-900 border-gray-400 rounded-b-2xl w-full border-b-1  shadow-xl shadow-gray-800/50 rounded-xl {{ request()->is('register') ? '' : 'fixed z-[9999px]' }}">
+        class="bg-gray-900 border-gray-400 rounded-b-2xl w-full border-b-1  shadow-xl shadow-gray-800/50 rounded-xl fixed z-[9999px]">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="{{ url('/') }}" class="flex items-center space-x-1 rtl:space-x-reverse">
                 <img src="{{ asset('storage/image/logo.png') }}" class="md:h-8 h-6 rounded-full" alt="Kabaena Logo" />
@@ -27,26 +27,32 @@
                     kabaena<span class="text-red-600 font-kodeMono">CUP</span></span>
                 </span>
             </a>
-            <button data-collapse-toggle="navbar-default" type="button"
-                class="md:hidden inline-flex items-center p-2 w-10 h-10 justify-center text-sm  rounded-lg  focus:outline-none focus:ring-2  text-gray-400 hover:bg-red-700 focus:ring-red-600"
-                aria-controls="navbar-default" aria-expanded="false">
-                <span class="sr-only">Open main menu</span>
-                <x-uiw-menu class="w-5 text-gray-400" />
-            </button>
+            <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                <a href="{{ route('login') }}"
+                    class="text-white font-poppins  bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 text-center">
+                    Login
+                </a>
+                <button data-collapse-toggle="navbar-default" type="button"
+                    class="md:hidden inline-flex items-center p-2 w-10 h-10 justify-center text-sm  rounded-lg  focus:outline-none focus:ring-2  text-gray-400 hover:bg-red-700 focus:ring-red-600"
+                    aria-controls="navbar-default" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <x-uiw-menu class="w-5 text-gray-400" />
+                </button>
+            </div>
             <div class="md:block w-full hidden md:w-auto" id="navbar-default">
                 <ul class="font-medium flex flex-row  p-0 mt-0  rounded-lg space-x-0 md:space-x-8">
                     <li>
                         <a href="{{ url('/') }}"
-                            class="block py-2 px-2 md:px-3   rounded  md:p-0 hover:text-red-600 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 hover:underline hover:text-[16px] md:hover:text-[18px] {{ request()->is('/') ? 'text-red-600 text-[16px] md:text-[18px] underline -translate-y-1 scale-110' : 'text-white text-[14px] md:text-[16px]' }}"
+                            class="block py-2 px-2 md:px-3   rounded  md:p-0 hover:text-red-600 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 hover:underline hover:text-[16px] md:hover:text-[18px] {{ request()->is('/') ? 'text-red-600 text-[16px] md:text-[18px] underline -translate-y-1 scale-110' : 'text-white text-[14px] md:text-[16px] font-poppins' }}"
                             aria-current="page">Home</a>
                     </li>
                     <li>
                         <a href="{{ url('/schedule') }}"
-                            class="block py-2 px-2 md:px-3  rounded md:p-0  hover:text-red-600 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 hover:underline hover:text-[16px] md:hover:text-[18px] {{ request()->is('schedule') ? 'text-red-600 text-[16px] md:text-[18px] underline -translate-y-1 scale-110' : 'text-white text-[14px] md:text-[16px]' }}">Schedule</a>
+                            class="block py-2 px-2 md:px-3  rounded md:p-0  hover:text-red-600 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 hover:underline hover:text-[16px] md:hover:text-[18px] {{ request()->is('schedule') ? 'text-red-600 text-[16px] md:text-[18px] underline -translate-y-1 scale-110' : 'text-white text-[14px] md:text-[16px] font-poppins' }}">Schedule</a>
                     </li>
                     <li>
                         <a href=" {{ url('/register') }} "
-                            class="block py-2 px-2 md:px-3  rounded md:p-0 text-[14px] hover:text-red-600 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 hover:underline hover:text-[16px] md:hover:text-[18px] {{ request()->is('register') ? 'text-red-600 text-[16px] md:text-[18px] underline -translate-y-1 scale-110' : 'text-white text-[14px] md:text-[16px]' }} ">Registration</a>
+                            class="block py-2 px-2 md:px-3  rounded md:p-0 text-[14px] hover:text-red-600 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 hover:underline hover:text-[16px] md:hover:text-[18px] {{ request()->is('register') ? 'text-red-600 text-[16px] md:text-[18px] underline -translate-y-1 scale-110' : 'text-white text-[14px] md:text-[16px] font-poppins' }} ">Registration</a>
                     </li>
                 </ul>
             </div>
@@ -55,7 +61,7 @@
 
 
     {{-- content --}}
-    <main class="w-full  p-2">
+    <main class="w-full  p-6">
 
         @yield('content')
     </main>
@@ -86,7 +92,7 @@
             </div>
             <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
             <div class="sm:flex sm:items-center sm:justify-between">
-                <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a
+                <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024-{{ date('Y') }} <a
                         href="{{ route('home') }}" class="hover:underline">Kabaena Cup™</a>. All Rights Reserved.
                 </span>
                 <div class="flex mt-4 sm:justify-center sm:mt-0">

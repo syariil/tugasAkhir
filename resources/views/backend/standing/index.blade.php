@@ -39,7 +39,7 @@
                     <div class=" p-2 rounded-lg " id="standing" role="tabpanel">
                         <div class="w-full flex flex-col justify-start items-center mb-2 gap-2">
                             <div class="flex w-full justify-end flex-col">
-                                <div class="flex justify-end ">
+                                <div class="flex justify-end flex-col-reverse md:flex-row gap-2 md:gap-0">
                                     <button data-modal-target="standing-add" data-modal-toggle="standing-add"
                                         class=" flex flex-row text-white  focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-3 py-1.5 md:py-2.5 text-center bg-red-600 hover:bg-red-700 focus:ring-red-800 items-center"
                                         type="button">
@@ -47,11 +47,10 @@
                                         <span class="font-poppins capitalize">standing</span>
                                     </button>
                                     <form action="{{ route('standing.index') }}" method="GET" class="flex flex-row">
-
-                                        <div class="flex justify-center">
-                                            <div class="flex justify-center mx-2">
+                                        <div class="flex justify-center w-full">
+                                            <div class="flex justify-center mx-2 w-full">
                                                 <select name="season"
-                                                    class="bg-gray-800 text-white p-1 rounded focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent">
+                                                    class="bg-gray-800 text-white p-1 rounded focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent w-full">
                                                     <option value="">Pilih Season</option>
                                                     @for ($i = 1; $i <= $seasons[0]->season; $i++)
                                                         <option value="{{ $i }}">
@@ -66,7 +65,6 @@
                                             </button>
                                         </div>
                                     </form>
-
                                 </div>
                             </div>
                             <div class="w-full flex justify-center">

@@ -1,7 +1,14 @@
 @extends('layout.admin')
 @section('title', 'system')
 @section('content')
-    <div class="mt-14 p-2">
+    <div class="mt-[70px] p-0 md:p-2">
+        <nav class="flex bg-gray-800 px-4 py-3 rounded">
+            <ol class="inline-flex items-center space-x-1 text-white">
+                <li><a href="{{ route('dashboard') }}" class="hover:text-red-600">Home</a></li>
+                <li><span class="mx-2">/</span></li>
+                <li>System</li>
+            </ol>
+        </nav>
         <section class="bg-gray-800  p-3 sm:p-5 min-h-screen">
             <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10 bg-gray-900 rounded-xl">
                 <!-- Breadcrumb Start -->
@@ -38,9 +45,12 @@
                                             @enderror
                                         </div>
                                         <div>
-                                            @if ($system != null)
+                                            @if ($system !== null)
                                                 <img src="{{ asset('storage/image/banner/' . $system->banner) }}"
                                                     alt="banner" class="w-[120px]">
+                                            @else
+                                                <img src="{{ asset('storage/image/banner/logo.png') }}" alt="banner"
+                                                    class="w-[120px]">
                                             @endif
                                         </div>
                                     </div>
@@ -58,13 +68,11 @@
                                         </div>
                                         <div>
                                             @if ($system != null)
-                                                @if ($system->playoff_banner != null)
-                                                    <img src="{{ asset('storage/image/banner/' . $system->playoff_banner) }}"
-                                                        alt="banner" class="w-[120px]">
-                                                @else
-                                                    <img src="{{ asset('storage/image/banner/logo.png') }}" alt="banner"
-                                                        class="w-[120px]">
-                                                @endif
+                                                <img src="{{ asset('storage/image/banner/' . $system->playoff_banner) }}"
+                                                    alt="banner" class="w-[120px]">
+                                            @else
+                                                <img src="{{ asset('storage/image/banner/logo.png') }}" alt="banner"
+                                                    class="w-[120px]">
                                             @endif
                                         </div>
                                     </div>
@@ -103,14 +111,9 @@
                                             <label for="banner" class="block text-sm font-medium text-white">
                                                 Season
                                             </label>
-                                            @if ($system == null)
-                                                <input type="numeric" id="season" name="season"
-                                                    class="border  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light">
-                                            @else
-                                                <input type="numeric" id="season" name="season"
-                                                    value="{{ $system->season }}"
-                                                    class="border  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light">
-                                            @endif
+                                            <input type="numeric" id="season" name="season"
+                                                value="{{ isset($system) ? $system->season : '' }}"
+                                                class="border  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light">
                                             @error('season')
                                                 <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins">
                                                     {{ $message }}</p>
@@ -120,26 +123,23 @@
                                             <label for="banner" class="block text-sm font-medium text-white">
                                                 Registration
                                             </label>
-                                            @if ($system == null)
-                                                <select name="registration" id="babak"
-                                                    class="w-full  border   text-sm rounded-lg  block p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
-                                                    @foreach ($registration as $item)
-                                                        <option value="{{ $item['value'] }}" class="capitalize">
-                                                            {{ $item['name'] }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            @else
-                                                <select name="registration" id="babak"
-                                                    class="w-full  border   text-sm rounded-lg  block p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
+                                            <select name="registration" id="babak"
+                                                class="w-full  border   text-sm rounded-lg  block p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
+                                                @if (isset($system))
                                                     @foreach ($registration as $item)
                                                         <option value="{{ $item['value'] }}" class="capitalize"
                                                             {{ old('registration', $system->registration ?? '') == $item['value'] ? 'selected' : '' }}>
                                                             {{ $item['name'] }}
                                                         </option>
                                                     @endforeach
-                                                </select>
-                                            @endif
+                                                @else
+                                                    @foreach ($registration as $item)
+                                                        <option value="{{ $item['value'] }}" class="capitalize">
+                                                            {{ $item['name'] }}
+                                                        </option>
+                                                    @endforeach
+                                                @endif
+                                            </select>
                                             @error('registration')
                                                 <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins">
                                                     {{ $message }}</p>
@@ -151,26 +151,23 @@
                                             <label for="banner" class="block text-sm font-medium text-white">
                                                 Schedule
                                             </label>
-                                            @if ($system == null)
-                                                <select name="schedule" id="schedule"
-                                                    class="w-full  border   text-sm rounded-lg  block p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
-                                                    @foreach ($schedule as $item)
-                                                        <option value="{{ $item['value'] }}" class="capitalize">
-                                                            {{ $item['name'] }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            @else
-                                                <select name="schedule" id="babak"
-                                                    class="w-full  border   text-sm rounded-lg  block p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
+                                            <select name="schedule" id="babak"
+                                                class="w-full  border   text-sm rounded-lg  block p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
+                                                @if (isset($system))
                                                     @foreach ($schedule as $item)
                                                         <option value="{{ $item['value'] }}" class="capitalize"
                                                             {{ old('registration', $system->schedule ?? '') == $item['value'] ? 'selected' : '' }}>
                                                             {{ $item['name'] }}
                                                         </option>
                                                     @endforeach
-                                                </select>
-                                            @endif
+                                                @else
+                                                    @foreach ($schedule as $item)
+                                                        <option value="{{ $item['value'] }}" class="capitalize">
+                                                            {{ $item['name'] }}
+                                                        </option>
+                                                    @endforeach
+                                                @endif
+                                            </select>
                                             @error('schedule')
                                                 <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins">
                                                     {{ $message }}</p>
@@ -180,19 +177,52 @@
                                             <label for="banner" class="block text-sm font-medium text-white">
                                                 poin
                                             </label>
-                                            @if ($system == null)
-                                                <input type="numeric" id="poin" name="poin"
-                                                    class="border  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light">
-                                            @else
-                                                <input type="numeric" id="poin" name="poin"
-                                                    value="{{ $system->poin }}"
-                                                    class="border  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light">
-                                            @endif
+                                            <input type="numeric" id="poin" name="poin"
+                                                value="{{ isset($system) ? $system->poin : '' }}"
+                                                class="border  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light">
                                             @error('poin')
                                                 <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins">
                                                     {{ $message }}</p>
                                             @enderror
                                         </div>
+                                    </div>
+                                    <div class="mb-0 md:mb-5 flex flex-col md:flex-row  justify-between gap-2 md:gap-4">
+                                        <div class="w-full">
+                                            <label for="banner" class="block text-sm font-medium text-white">
+                                                Nomor Rekening
+                                            </label>
+                                            <input type="numeric" id="no_rek" name="no_rek"
+                                                value="{{ isset($system) ? $system->no_rek : '' }}"
+                                                class="border  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light">
+                                            @error('no_rek')
+                                                <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins">
+                                                    {{ $message }}</p>
+                                            @enderror
+                                        </div>
+                                        <div class="w-full">
+                                            <label for="banner" class="block text-sm font-medium text-white">
+                                                Bank
+                                            </label>
+                                            <input type="text" id="bank" name="bank"
+                                                value="{{ isset($system) ? $system->bank : '' }}"
+                                                class="border  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light">
+                                            @error('bank')
+                                                <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins">
+                                                    {{ $message }}</p>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="w-full">
+                                        <label for="banner" class="block text-sm font-medium text-white">
+                                            Fee
+                                        </label>
+                                        <input type="numeric" id="fee-input" name="fee"
+                                            value="{{ isset($system) ? number_format($system->fee, 0, ',', '.') : '' }}"
+                                            class="border  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light">
+                                        @error('fee')
+                                            <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins">
+                                                {{ $message }}</p>
+                                        @enderror
                                     </div>
                                     <div>
                                         <button type="submit"
@@ -209,4 +239,22 @@
             </div>
         </section>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const fee = document.getElementById("fee-input");
+            if (fee.value) {
+                fee.value = new Intl.NumberFormat("id-ID").format(feeInput.value.replace(/\./g, ""));
+            }
+
+            fee.addEventListener("input", function() {
+                let value = this.value.replace(/\./g, "");
+                if (!isNaN(value) && value !== "") {
+                    this.value = new Intl.NumberFormat("id-ID").format(value);
+                } else {
+                    this.value = "";
+                }
+            });
+        });
+    </script>
 @endsection

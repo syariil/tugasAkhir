@@ -33,7 +33,7 @@ class ScheduleController extends Controller
 
                 $grup = DB::select('select id, grup from grups where season = ?', [$season]);
 
-                return view("frontend.schedule.regular", ['schedule' => $scheduleRegular, 'day' => $day, 'standing' => $standing, 'grup' => $grup]);
+                return view("frontend.schedule.regular", ['schedules' => $scheduleRegular, 'day' => $day, 'standing' => $standing, 'grup' => $grup]);
             } else {
                 $schedulePlayoff = DB::select("select schedules.*, timA.short_squad as timA, timB.short_squad as timB, timA.logo as logoA, timB.logo as logoB from schedules inner join tims as timA on timA.id = schedules.id_timA inner join tims as timB on timB.id = schedules.id_timB where schedules.babak = ? and (timA.season = ? or timB.season = ?)", [$babak, $season, $season]);
 

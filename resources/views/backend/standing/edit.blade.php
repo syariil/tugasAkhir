@@ -2,8 +2,8 @@
 @section('title', 'standings')
 @section('content')
     <div class="p-4 mt-14">
-        <div class="w-full bg-gray-800 rounded-3xl">
-            <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+        <section class="w-full bg-gray-800 rounded-3xl p-1 sm:p-5">
+            <div class="mx-auto max-w-screen-2xl relative  2xl:p-10">
                 <!-- Breadcrumb Start -->
                 <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                     <h2 class="font-poppins uppercase text-[18px] font-bold text-white">
@@ -30,29 +30,29 @@
                         </div>
                     </div>
                 @endif
-                <div class="w-full flex justify-center">
-                    <table class="w-full p-0 md:px-6 text-sm text-left rtl:text-righttext-gray-200 rounded-t-full">
-                        <thead class="text-xs uppercase bg-red-700 text-white ">
+                <div class="w-full flex justify-center overflow-x-auto p-1">
+                    <table class="w-full text-sm text-center text-gray-500 overflow-x-auto p-1">
+                        <thead class="text-xs uppercase bg-red-700 text-white">
                             <tr>
-                                <th scope="col" class="px-3 md:px-6 py-3">
+                                <th scope="col" class="px-3 hidden md:block  py-3">
                                     No
                                 </th>
-                                <th scope="col" class="px-3 md:px-6 py-3">
+                                <th scope="col" class="px-3  py-3">
                                     Team
                                 </th>
-                                <th scope="col" class="px-3 md:px-6 py-3">
-                                    Win
+                                <th scope="col" class="px-3  py-3">
+                                    W
                                 </th>
-                                <th scope="col" class="px-3 md:px-6 py-3">
-                                    Lose
+                                <th scope="col" class="px-3  py-3">
+                                    L
                                 </th>
-                                <th scope="col" class="px-3 md:px-6 py-3">
-                                    Winrate(%)
+                                <th scope="col" class="px-3  py-3">
+                                    WR(%)
                                 </th>
-                                <th scope="col" class="px-3 md:px-6 py-3">
-                                    Poin
+                                <th scope="col" class="px-3  py-3">
+                                    Pt
                                 </th>
-                                <th scope="col" class="px-3 md:px-6 py-3">
+                                <th scope="col" class="px-3  py-3">
                                     Action
                                 </th>
                             </tr>
@@ -63,25 +63,26 @@
                             @endphp
                             @foreach ($grup as $item)
                                 <tr class=" border-b bg-gray-900 border-gray-700">
-                                    <th scope="row" class="px-3 md:px-6 py-4 text-gray-200">
+                                    <td class="px-3  hidden md:block py-4 text-gray-200">
                                         {{ $no++ }}
-                                    </th>
-                                    <td class="px-3 md:px-6 py-4 font-medium  uppercase whitespace-nowrap text-white">
+                                    </td>
+                                    <td class="px-3  py-4 font-medium  uppercase whitespace-wrap text-white">
                                         {{ $item->squad }}
                                     </td>
-                                    <td class="px-3 md:px-6 py-4 font-medium  uppercase whitespace-nowrap text-white">
+                                    <td class="px-3  py-4 font-medium  uppercase whitespace-wrap text-white">
                                         {{ $item->win }}
                                     </td>
-                                    <td class="px-3 md:px-6 py-4 font-medium  uppercase whitespace-nowrap text-white">
+                                    <td class="px-3  py-4 font-medium  uppercase whitespace-wrap text-white">
                                         {{ $item->lose }}
                                     </td>
-                                    <td class="px-3 md:px-6 py-4 font-medium  uppercase whitespace-nowrap text-white">
+                                    <td class="px-3  py-4 font-medium  uppercase whitespace-wrap text-white">
                                         {{ $item->winrate }}
                                     </td>
-                                    <td class="px-3 md:px-6 py-4 font-medium  uppercase whitespace-nowrap text-white">
+                                    <td class="px-3  py-4 font-medium  uppercase whitespace-wrap text-white">
                                         {{ $item->poin }}
                                     </td>
-                                    <td class="py-4 px-2 md:px-6 flex flex-row gap-2">
+                                    <td
+                                        class="py-4 px-1 md:px-2 gap-2  flex flex-col md:flex-row justify-center items-center">
                                         <a href="{{ route('standing.editStanding', $item->id) }}"
                                             class="font-medium text-white bg-blue-500 hover:underline px-2 py-1 rounded-3xl">
                                             <x-uiw-edit class="w-5" />
@@ -100,7 +101,7 @@
                     </table>
                 </div>
             </div>
-        </div>
+        </section>
 
 
         @foreach ($grup as $tim)

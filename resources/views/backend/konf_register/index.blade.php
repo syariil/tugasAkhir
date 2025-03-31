@@ -2,7 +2,7 @@
 @section('title', 'registration')
 @section('content')
     <div class="p-4 mt-14">
-        <div class="w-full bg-gray-800 rounded-3xl">
+        <section class="w-full bg-gray-800 p-1 sm:p-5 rounded-3xl">
             <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
                 <!-- Breadcrumb Start -->
                 <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -10,83 +10,85 @@
                         Registration List
                     </h2>
                 </div>
-                @if ($tim = Session::get('success'))
-                    <div class="flex items-center p-4 mb-4 text-sm text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800"
-                        role="alert">
-                        <x-uiw-notification class="w-6" />
-                        <span class="sr-only">Info</span>
-                        <div>
-                            <span class="font-medium">{{ $tim }}</span>;
+                <div class="w-full px-1">
+                    <div class="bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
+                        @if ($tim = Session::get('success'))
+                            <div class="flex items-center p-4 mb-4 text-sm text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800"
+                                role="alert">
+                                <x-uiw-notification class="w-6" />
+                                <span class="sr-only">Info</span>
+                                <div>
+                                    <span class="font-medium">{{ $tim }}</span>;
+                                </div>
+                            </div>
+                        @endif
+                        @if ($tim = Session::get('delete'))
+                            <div class="flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
+                                role="alert">
+                                <x-uiw-notification class="w-6" />
+                                <span class="sr-only">Info</span>
+                                <div>
+                                    <span class="font-medium">{{ $tim }}</span>;
+                                </div>
+                            </div>
+                        @endif
+                        <div class="overflow-x-auto p-1 bg-gray-900">
+                            <table class="w-full  text-sm text-left rounded-t-full text-gray-500 overflow-x-auto">
+                                <thead class="text-xs uppercase bg-red-700 text-white ">
+                                    <tr>
+
+                                        <th scope="col" class="px-3 md:px-6 py-3">
+                                            Team
+                                        </th>
+                                        <th scope="col" class="px-3 md:px-6 py-3">
+                                            No Wahtsapp
+                                        </th>
+                                        <th scope="col" class="px-3 md:px-6 py-3">
+                                            Action
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach ($data as $tim)
+                                        <tr class=" border-b bg-gray-900 border-gray-700">
+                                            <td
+                                                class="px-2 md:px-6 py-4 font-light md:font-medium  capitalize whitespace-nowrap text-white">
+                                                {{ $tim->squad }}
+                                            </td>
+                                            <td
+                                                class="px-2 md:px-6 py-4 font-light md:font-medium  capitalize whitespace-nowrap text-white">
+                                                {{ $tim->no_whatsapp }}
+                                            </td>
+                                            <td
+                                                class="py-4 px-1 md:px-2 gap-2  flex flex-col md:flex-row justify-center items-center">
+                                                <button data-modal-target="tim-view{{ $tim->id }}"
+                                                    data-modal-toggle="tim-view{{ $tim->id }}"
+                                                    class="font-medium text-white bg-green-500 hover:underline px-2 py-1 rounded-lg">
+                                                    <x-uiw-eye class="w-5" />
+                                                </button>
+                                                <button data-modal-target="tim-aprove{{ $tim->id }}"
+                                                    data-modal-toggle="tim-aprove{{ $tim->id }}"
+                                                    class="font-medium text-white bg-blue-500 hover:underline px-2 py-1 rounded-lg">
+                                                    <x-uiw-circle-check class="w-5" />
+                                                </button>
+
+                                                <button data-modal-target="tim-delete{{ $tim->id }}"
+                                                    data-modal-toggle="tim-delete{{ $tim->id }}"
+                                                    class="font-medium text-white px-2 py-1 rounded-lg bg-red-600 hover:underline">
+                                                    <x-uiw-close class="w-5" />
+                                                </button>
+
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                @endif
-                @if ($tim = Session::get('delete'))
-                    <div class="flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
-                        role="alert">
-                        <x-uiw-notification class="w-6" />
-                        <span class="sr-only">Info</span>
-                        <div>
-                            <span class="font-medium">{{ $tim }}</span>;
-                        </div>
-                    </div>
-                @endif
-                <table class="w-full  text-sm text-left rounded-t-full text-gray-500 overflow-x-auto">
-                    <thead class="text-xs uppercase bg-red-700 text-white ">
-                        <tr>
-                            <th scope="col" class="px-3 md:px-6 py-3">
-                                No
-                            </th>
-                            <th scope="col" class="px-3 md:px-6 py-3">
-                                Team
-                            </th>
-                            <th scope="col" class="px-3 md:px-6 py-3">
-                                Nomor Wahtsapp
-                            </th>
-                            <th scope="col" class="px-3 md:px-6 py-3">
-                                Action
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @php
-                            $no = 1;
-                        @endphp
-                        @foreach ($data as $tim)
-                            <tr class=" border-b bg-gray-900 border-gray-700">
-                                <th scope="row" class="px-3 md:px-6 py-4 text-gray-200">
-                                    {{ $no }}
-                                </th>
-                                <td class="px-3 md:px-6 py-4 font-medium  uppercase whitespace-nowrap text-white">
-                                    {{ $tim->squad }}
-                                </td>
-                                <td class="px-3 md:px-6 py-4 font-medium  uppercase whitespace-nowrap text-white">
-                                    {{ $tim->no_whatsapp }}
-                                </td>
-                                <td class="py-4 px-2 md:px-6 flex flex-row gap-2">
-                                    <button data-modal-target="tim-view{{ $tim->id }}"
-                                        data-modal-toggle="tim-view{{ $tim->id }}"
-                                        class="font-medium text-white bg-green-500 hover:underline px-2 py-1 rounded-3xl">
-                                        <x-uiw-eye class="w-5" />
-                                    </button>
-                                    <button data-modal-target="tim-aprove{{ $tim->id }}"
-                                        data-modal-toggle="tim-aprove{{ $tim->id }}"
-                                        class="font-medium text-white bg-blue-500 hover:underline px-2 py-1 rounded-3xl">
-                                        <x-uiw-circle-check class="w-5" />
-                                    </button>
-
-                                    <button data-modal-target="tim-delete{{ $tim->id }}"
-                                        data-modal-toggle="tim-delete{{ $tim->id }}"
-                                        class="font-medium text-white px-2 py-1 rounded-3xl bg-red-600 hover:underline">
-                                        <x-uiw-close class="w-5" />
-                                    </button>
-
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                </div>
             </div>
-        </div>
+        </section>
 
         @foreach ($data as $tim)
             <div id="tim-view{{ $tim->id }}" tabindex="-1" aria-hidden="true"

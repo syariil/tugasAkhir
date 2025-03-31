@@ -185,4 +185,6 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
+    'wa_token' => env("WA_TOKEN"),
+
 ];

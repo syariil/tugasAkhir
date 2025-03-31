@@ -13,7 +13,8 @@
                 </h1>
                 <h3
                     class="text-white font-poppins capitalize text-center text-[24px] font-semibold rop-shadow-[0_1.2px_1.2px_rgba(0,0,0,1)] outline-4">
-                    Admin {{ Auth::user()->nama }}
+                    {{ auth()->user()->role === 'admin' ? 'Admin' : 'peserta' }}
+                    {{ Auth::user()->username }}
                 </h3>
             </div>
         </div>

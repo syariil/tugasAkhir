@@ -25,6 +25,16 @@
                         class=" flex justify-center  text-4xl font-bold leading-tight tracking-tight  md:text-2xl text-white font-poppins uppercase">
                         Login
                     </h1>
+                    @if ($data = Session::get('success'))
+                        <div class="flex items-center p-4 mb-4 text-sm text-red-600 border border-red-300 rounded-lg bg-green-50"
+                            role="alert">
+                            <x-uiw-notification class="w-6" />
+                            <span class="sr-only">Info</span>
+                            <div>
+                                <span class="font-medium">{{ $data }}</span> &#128078;
+                            </div>
+                        </div>
+                    @endif
                     <form class="space-y-4 md:space-y-6" action="{{ route('login.action') }}" method="POST">
                         @csrf
                         <div>

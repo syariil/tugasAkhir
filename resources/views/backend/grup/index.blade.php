@@ -102,13 +102,13 @@
                                                 </td>
                                                 <td class="py-4 px-2 md:px-6 flex flex-row gap-2">
                                                     <a href="{{ route('grup.edit', $item->id) }}"
-                                                        class="font-medium text-white bg-blue-500 hover:underline px-2 py-1 rounded-3xl">
+                                                        class="font-medium text-white bg-blue-500 hover:underline px-2 py-1 rounded-lg">
                                                         <x-uiw-edit class="w-5" />
                                                     </a>
 
                                                     <button data-modal-target="grup-delete{{ $item->id }}"
                                                         data-modal-toggle="grup-delete{{ $item->id }}"
-                                                        class="font-medium text-white px-2 py-1 rounded-3xl bg-red-600 hover:underline">
+                                                        class="font-medium text-white px-2 py-1 rounded-lg bg-red-600 hover:underline">
                                                         <x-uiw-close class="w-5" />
                                                     </button>
 

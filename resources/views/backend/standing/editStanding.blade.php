@@ -17,8 +17,6 @@
                                 @csrf
                                 @method('put')
                                 <div class="p-4 bg-gray-900 border border-gray-600 rounded-lg space-y-4">
-
-
                                     <!-- Tim A -->
                                     <div class="flex md:flex-row gap-2">
                                         <div class="w-full">

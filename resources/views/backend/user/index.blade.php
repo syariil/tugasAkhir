@@ -1,17 +1,17 @@
 @extends('layout.admin')
-@section('title', 'Tim')
+@section('title', 'User managemen')
 @section('content')
     <div class="md:p-4 mt-14">
         <section class="bg-gray-800 w-full p-1 sm:p-5">
             <h1 class="text-white font-poppins text-[24px] border-x-black border-b-2 uppercase font-bold">
-                Tim List
+                User List
             </h1>
             <div class="w-full px-1">
                 <div class="bg-gray-800  relative shadow-md sm:rounded-lg overflow-hidden">
                     <div
-                        class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
+                        class="flex flex-col-reverse gap-3 md:gap-0 md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                         <div class="w-full md:w-1/3">
-                            <form class="flex items-center" method="GET" action="{{ route('tim.index') }}">
+                            <form class="flex items-center" method="GET" action="{{ route('user.index') }}">
                                 <label for="simple-search" class="sr-only">Search</label>
                                 <div class="relative w-full">
                                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -19,26 +19,17 @@
                                     </div>
                                     <input type="text" id="search" value="{{ request('search') }}" name="search"
                                         class="bg-gray-900 border border-gray-600 text-white text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full pl-10 p-2   placeholder-gray-500   "
-                                        placeholder="cari tim...">
+                                        placeholder="cari user...">
                                 </div>
                             </form>
                         </div>
-                        <div class="w-full md:w-1/3">
-                            <form class="flex items-center gap-2 md:gap-0" method="GET" action="{{ route('tim.index') }}">
-                                <div class="flex justify-start mx-0 md:mx-2 w-full">
-                                    <select name="season"
-                                        class="bg-gray-800 text-white p-1 rounded focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent w-full">
-                                        <option value="">Season</option>
-                                        @for ($i = $season; $i != 0; $i--)
-                                            <option value="{{ $i }}">{{ $i }}</option>
-                                        @endfor
-                                    </select>
-                                </div>
-                                <button type="submit"
-                                    class="bg-red-600 text-white p-2 rounded-md focus:outline-focus:ring-2 focus:ring-gray-200 focus:border-transparent">
-                                    filter
-                                </button>
-                            </form>
+                        <div
+                            class="w-full md:w-auto flex flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-start md:justify-end md:space-x-3 flex-shrink-0">
+                            <a href="{{ route('user.add') }}"
+                                class="flex items-center justify-center text-white bg-blue-500  hover:bg-blue-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2  focus:outline-none gap-1">
+                                <x-uiw-plus class="w-4" />
+                                User
+                            </a>
                         </div>
                     </div>
                     <div class="overflow-x-auto p-1 bg-gray-900">
@@ -48,7 +39,7 @@
                                 <x-uiw-notification class="w-6" />
                                 <span class="sr-only">Info</span>
                                 <div>
-                                    <span class="font-medium">{{ $update }}</span> berhasil diupdate;
+                                    <span class="font-medium">{{ $update }}</span>;
                                 </div>
                             </div>
                         @endif
@@ -62,17 +53,14 @@
                                 </div>
                             </div>
                         @endif
-                        <table class="w-full text-sm text-center text-gray-500 overflow-x-auto">
+                        <table class="w-full text-sm text-left text-gray-500 overflow-x-auto">
                             <thead class="text-xs uppercase bg-red-700 text-white">
                                 <tr>
                                     <th scope="col" class="px-3  py-3">
-                                        Team
-                                    </th>
-                                    <th scope="col" class="px-3  py-3 hidden md:block">
-                                        No Whatsapp
+                                        Username
                                     </th>
                                     <th scope="col" class="px-3  py-3">
-                                        Season
+                                        Role
                                     </th>
                                     <th scope="col" class="px-3  py-3">
                                         Action
@@ -80,55 +68,34 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if (!$tim->isEmpty())
-                                    @foreach ($tim as $item)
-                                        <tr class=" border-b bg-gray-900 border-gray-700">
-                                            <td
-                                                class="px-3  py-4 font-normal text-[14px] md:text-[16px] md:font-medium  uppercase whitespace-wrap text-white">
-                                                {{ $item->squad }}
-                                            </td>
-                                            <td
-                                                class="px-3  py-4 font-normal text-[14px] hidden md:block md:text-[16px] md:font-medium  uppercase whitespace-wrap text-white">
-                                                {{ $item->no_whatsapp }}
-
-                                            </td>
-                                            <td
-                                                class="px-3  py-4 font-normal text-[14px] md:text-[16px] md:font-medium whitespace-wrap text-white">
-                                                {{ $item->season }}
-                                            </td>
-                                            <td
-                                                class="py-4 px-1 md:px-2 gap-2  flex flex-col md:flex-row justify-center items-center">
-                                                <a href="{{ route('tim.view', $item->id) }}"
-                                                    class="font-medium text-white bg-green-600 hover:underline px-2 py-1 rounded-lg ml-2">
-                                                    <x-uiw-eye-o class="w-5" />
-                                                </a>
-                                                <a href="{{ route('tim.edit', $item->id) }}"
-                                                    class="font-medium text-white bg-blue-500 hover:underline px-2 py-1 rounded-lg ml-2">
-                                                    <x-uiw-edit class="w-5" />
-                                                </a>
-                                                <button data-modal-target="tim-delete{{ $item->id }}"
-                                                    data-modal-toggle="tim-delete{{ $item->id }}"
-                                                    class="font-medium text-white px-2 py-1 rounded-lg bg-red-600 hover:underline ml-2">
-                                                    <x-uiw-delete class="w-5" />
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                @else
-                                    <tr>
-                                        <td colspan="4"
-                                            class="px-6 py-4 text-center text-sm md:text-lg text-gray-300 font-semibold">
-                                            daftar tim tidak ditemukan.
+                                @foreach ($user as $item)
+                                    <tr class=" border-b bg-gray-900 border-gray-700">
+                                        <td class="px-3  py-4 font-medium  whitespace-wrap text-white">
+                                            {{ $item->username }}
+                                        </td>
+                                        <td class="px-3  py-4 font-medium  whitespace-wrap text-white">
+                                            {{ $item->role }}
+                                        </td>
+                                        <td class="py-4 px-1 md:px-2  flex flex-row ">
+                                            <a href="{{ route('user.edit', $item->id) }}"
+                                                class="font-medium text-white bg-blue-500 hover:underline px-2 py-1 rounded-3xl ml-2">
+                                                <x-uiw-edit class="w-5" />
+                                            </a>
+                                            <button data-modal-target="user-delete{{ $item->id }}"
+                                                data-modal-toggle="user-delete{{ $item->id }}"
+                                                class="font-medium text-white px-2 py-1 rounded-3xl bg-red-600 hover:underline ml-2">
+                                                <x-uiw-delete class="w-5" />
+                                            </button>
                                         </td>
                                     </tr>
-                                @endif
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
                     <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4"
                         aria-label="Table navigation">
                         <ul class="inline-flex items-stretch -space-x-px text-white ">
-                            {{ $tim->links() }}
+                            {{ $user->links() }}
                         </ul>
                     </nav>
                 </div>
@@ -141,14 +108,14 @@
 
     <!-- Main modal -->
 
-    @foreach ($tim as $tims)
-        <div id="tim-delete{{ $tims->id }}" tabindex="-1"
+    @foreach ($user as $item)
+        <div id="user-delete{{ $item->id }}" tabindex="-1"
             class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative p-4 w-full max-w-md max-h-full">
                 <div class="relative  rounded-lg shadow bg-gray-700">
                     <button type="button"
                         class="absolute top-3 end-2.5 text-gray-400 bg-transparent  rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center hover:bg-gray-600 hover:text-white"
-                        data-modal-hide="tim-delete{{ $tims->id }}">
+                        data-modal-hide="user-delete{{ $item->id }}">
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 14 14">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -162,11 +129,11 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
-                        <h3 class="mb-5 text-lg font-normal  text-gray-400">kamu yakin ingin menghapus tim <span
-                                class="text-red-500 font-bold font-poppins">{{ $tims->squad }}</span> &#128529; ?
+                        <h3 class="mb-5 text-lg font-normal  text-gray-400">kamu yakin ingin menghapus user <span
+                                class="text-red-500 font-bold font-poppins">{{ $item->username }}</span> &#128529; ?
                         </h3>
                         <div class="w-full flex justify-center items-center">
-                            <form action="{{ route('tim.delete', ['id' => $tims->id]) }}" method="POST">
+                            <form action="{{ route('user.delete', $item->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit"
@@ -174,7 +141,7 @@
                                     yakin laaa &#128539;
                                 </button>
                             </form>
-                            <button data-modal-hide="tim-delete{{ $tims->id }}" type="button"
+                            <button data-modal-hide="user-delete{{ $item->id }}" type="button"
                                 class="py-2.5 px-5 ms-3 text-sm font-medium  focus:outline-none  rounded-lg border focus:z-10 focus:ring-4  focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700">
                                 nggak jadi deh &#128549;
                             </button>

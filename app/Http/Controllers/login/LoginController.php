@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\login;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -28,12 +29,14 @@ class LoginController extends Controller
             ->where('username', $user['username'])
             ->first();
 
+
+        // dd($users);
         // Jika login manual berhasil
         if ($loginManual && $loginManual->password == '12345678') {
             // Set user ke session
             Auth::loginUsingId($loginManual->id);
             $request->session()->regenerate();
-            return redirect()->route('dashboard');
+            return redirect()->intended('admin');
         }
 
 

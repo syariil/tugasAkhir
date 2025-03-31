@@ -9,7 +9,7 @@
             <div class="w-full px-1">
                 <div class="bg-gray-800  relative shadow-md sm:rounded-lg overflow-hidden">
                     <div
-                        class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
+                        class="flex flex-col-reverse gap-3 md:gap-0 md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                         <div class="w-full md:w-1/3">
                             <form class="flex items-center" method="GET" action="{{ route('highlight.index') }}">
                                 <label for="simple-search" class="sr-only">Search</label>
@@ -24,7 +24,7 @@
                             </form>
                         </div>
                         <div
-                            class="w-full md:w-auto flex flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
+                            class="w-full md:w-auto flex flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-start md:justify-end md:space-x-3 flex-shrink-0">
                             <a href="{{ route('highlight.add') }}"
                                 class="flex items-center justify-center text-white bg-blue-500  hover:bg-blue-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2  focus:outline-none gap-1">
                                 <x-uiw-plus class="w-4" />
@@ -56,18 +56,13 @@
                         <table class="w-full text-sm text-left text-gray-500 overflow-x-auto">
                             <thead class="text-xs uppercase bg-red-700 text-white">
                                 <tr>
-                                    <th scope="col" class="px-1 md:px-3 py-3">
-                                        No
-                                    </th>
                                     <th scope="col" class="px-3  py-3">
                                         judul
                                     </th>
                                     <th scope="col" class="px-3  py-3">
                                         thumbnail
                                     </th>
-                                    <th scope="col" class="px-3  py-3">
-                                        url
-                                    </th>
+
                                     <th scope="col" class="px-3  py-3">
                                         Action
                                     </th>
@@ -75,39 +70,32 @@
 
                             </thead>
                             <tbody>
-                                @php
-                                    $i = 1;
-                                @endphp
                                 @foreach ($highlight as $item)
                                     <tr class=" border-b bg-gray-900 border-gray-700">
-                                        <th scope="row" class="px-3  py-4 text-gray-400">
-                                            {{ $i }}
-                                        </th>
                                         <td class="px-3  py-4 font-medium  uppercase whitespace-wrap text-white">
                                             {{ $item->judul }}
                                         </td>
                                         <td class="px-3  py-4 font-medium  uppercase whitespace-wrap text-white">
-                                            {{ $item->thumbnail }}
-
+                                            <img src="{{ asset('storage/image/thumbnail/' . $item->thumbnail) }}"
+                                                alt="thumbnail" class="w-20 h-20 object-contain">
                                         </td>
-                                        <td class="px-3  py-4 whitespace-wrap text-white">
-                                            {{ $item->url }}
-                                        </td>
-                                        <td class="py-4 px-2  flex flex-row ">
+                                        <td
+                                            class="py-4 px-1 md:px-2 gap-2  flex flex-col md:flex-row justify-center items-center">
+                                            <a href="{{ $item->url }}" target="_blank"
+                                                class="font-medium text-white bg-green-500 hover:underline px-2 py-1 rounded-lg ml-2">
+                                                <x-uiw-eye class="w-5" />
+                                            </a>
                                             <a href="{{ route('highlight.edit', $item->id) }}"
-                                                class="font-medium text-white bg-blue-500 hover:underline px-2 py-1 rounded-3xl ml-2">
+                                                class="font-medium text-white bg-blue-500 hover:underline px-2 py-1 rounded-lg ml-2">
                                                 <x-uiw-edit class="w-5" />
                                             </a>
                                             <button data-modal-target="highlight-delete{{ $item->id }}"
                                                 data-modal-toggle="highlight-delete{{ $item->id }}"
-                                                class="font-medium text-white px-2 py-1 rounded-3xl bg-red-600 hover:underline ml-2">
+                                                class="font-medium text-white px-2 py-1 rounded-lg bg-red-600 hover:underline ml-2">
                                                 <x-uiw-delete class="w-5" />
                                             </button>
                                         </td>
                                     </tr>
-                                    @php
-                                        $i++;
-                                    @endphp
                                 @endforeach
                             </tbody>
                         </table>

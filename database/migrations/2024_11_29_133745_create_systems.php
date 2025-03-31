@@ -20,6 +20,9 @@ return new class extends Migration
             $table->boolean('registration')->default(true);
             $table->integer('season')->nullable();
             $table->integer('poin')->nullable();
+            $table->string('bank')->nullable();
+            $table->bigInteger('no_rek')->nullable();
+            $table->integer('fee')->nullable();
             $table->timestamps();
         });
     }

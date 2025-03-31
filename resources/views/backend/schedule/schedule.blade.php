@@ -22,7 +22,7 @@
                 @endif
                 <div class="w-full flex flex-col justify-end items-center mb-2">
                     <div class="flex w-full justify-end flex-col">
-                        <div class="flex md:justify-between  md:flex-row flex-col-reverse gap-4 md:gap-0 ">
+                        <div class="flex justify-end  flex-row  gap-4  ">
                             <div class="flex justify-start">
                                 <button data-modal-target="schedule-add" data-modal-toggle="schedule-add"
                                     class=" flex flex-row text-white  focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-1.5 md:px-3 py-2 md:py-2.5 text-center bg-red-600 hover:bg-red-700 focus:ring-red-800 items-center"
@@ -32,100 +32,97 @@
                                         schedule
                                     </span>
                                 </button>
-
                             </div>
-                            <form action="{{ route('schedule.admin') }}" method="GET"
-                                class="flex flex-row w-full justify-end">
-                                <div class="flex justify-end md:flex-row flex-col gap-2 md:gap-0">
-                                    <div class="flex justify-start mx-0 md:mx-2 w-full">
-                                        <select name="tim"
-                                            class="bg-gray-800 text-white p-1 rounded focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent w-full">
-                                            <option value="">tim</option>
-                                            @foreach ($squads as $item)
-                                                <option value="{{ $item->id }}">{{ $item->squad }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="flex justify-start mx-0 md:mx-2">
-                                        <select name="day"
-                                            class="bg-gray-800 text-white p-1 rounded focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent w-full md:w-auto">
-                                            <option value="">day</option>
-                                            @for ($i = 1; $i < 11; $i++)
-                                                <option value="{{ $i }}">{{ $i }}</option>
-                                            @endfor
-                                        </select>
-                                    </div>
-                                    <button type="submit"
-                                        class="bg-red-600 text-white p-2 rounded-md focus:outline-focus:ring-2 focus:ring-gray-200 focus:border-transparent">
+                            <div class="flex justify-start">
+                                <button data-modal-target="notification" data-modal-toggle="notification"
+                                    class=" flex flex-row text-white  focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-1.5 md:px-3 py-2 md:py-2.5 text-center bg-red-600 hover:bg-red-700 focus:ring-red-800 items-center"
+                                    type="button">
+                                    <x-uiw-bell class="text-white w-4 md:w-5 font-bold mx-1" />
+                                    <span class="font-poppins capitalize">
+                                        notification
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="flex justify-start">
+                                <button data-modal-target="filter" data-modal-toggle="filter"
+                                    class=" flex flex-row text-white  focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-1.5 md:px-3 py-2 md:py-2.5 text-center bg-red-600 hover:bg-red-700 focus:ring-red-800 items-center"
+                                    type="button">
+                                    <x-uiw-filter class="text-white w-4 md:w-5 font-bold mx-1" />
+                                    <span class="font-poppins capitalize">
                                         filter
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full flex flex-wrap flex-col md:flex-row justify-start gap-2 p-2">
-                    @foreach ($schedule as $item)
-                        <div
-                            class="w-full md:max-w-[320px] flex flex-col border-gray-700 bg-gray-900 shadow-xl shadow-gray-800/100 rounded-xl border-2 py-2">
-                            <div class="flex justify-center items-center">
-                                <h1 class="text-red-600 font-poppins font-bold text-[18px] md:text-[24px] uppercase">
-                                    day {{ $item->day }}
-                                </h1>
-                            </div>
-                            <div class="  flex  flex-row justify-between items-center pb-2 px-2">
-                                {{-- team 1 --}}
-                                <div class="flex flex-col justify-center items-center max-w-[124px]">
-                                    <img src="{{ asset('storage/image/logo/' . $item->logoA) }}" alt="logo "
-                                        class=" max-w-[56px]  max-md:w-[64px]  rounded-full object-contain mb-1">
-                                    <h2 class="font-poppins font-bold text-[14px] text-center uppercase text-white ">
-                                        {{ $item->timA }}
-                                    </h2>
-                                </div>
-                                {{-- time --}}
-                                <div class="flex flex-row justify-between gap-6 items-center">
-                                    <h1 class="font-kodeMono font-extrabold text-red-600 text-5xl">
-                                        {{ $item->scoreA }}
-                                    </h1>
-                                    <div class="flex flex-col justify-center items-center ">
-
-                                        <h1 class="text-white font-bold text-[16px]">
-                                            {{ (new DateTime($item->time))->format('h:i ') }}
-                                        </h1>
-                                        </h1>
-                                        <h1 class="text-white font-bold text-[12px]">
-                                            {{ (new DateTime($item->date))->format('d M') }}
-                                        </h1>
-                                    </div>
-                                    <h1 class="font-kodeMono font-extrabold text-red-600 text-5xl">
-                                        {{ $item->scoreB }}
-                                    </h1>
-                                </div>
-                                {{-- team 2 --}}
-                                <div class="flex flex-col justify-center items-center max-w-[124px]">
-                                    <img src="{{ asset('storage/image/logo/' . $item->logoB) }}" alt="logo "
-                                        class=" max-w-[56px]  max-md:w-[64px]  rounded-full object-contain mb-1">
-                                    <h2 class="font-poppins font-bold text-[14px] text-center uppercase text-white ">
-                                        {{ $item->timB }}
-                                    </h2>
-                                </div>
-                                {{-- button --}}
-                                {{-- end of one match --}}
-                            </div>
-                            <div class="flex flex-row justify-start gap-2 items-center px-3">
-                                <a type="button" href="{{ route('schedule.edit', $item->id) }}"
-                                    class=" text-white  focus:ring-4 focus:outline-none font-poppins  font-medium rounded-lg text-sm px-3 py-1.5 md:py-2 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
-                                    <x-uiw-edit class="w-4 md:w-5" />
-                                </a>
-                                <button data-modal-target="schedule-delete{{ $item->id }}"
-                                    data-modal-toggle="schedule-delete{{ $item->id }}" type="button"
-                                    class=" text-white  focus:ring-4 focus:outline-none font-poppins  font-medium rounded-lg text-sm px-3 py-1.5 md:py-2 text-center bg-red-600 hover:bg-red-700 focus:ring-red-800">
-                                    <x-uiw-delete class="w-4 md:w-5" />
+                                    </span>
                                 </button>
                             </div>
                         </div>
-                    @endforeach
+                    </div>
+                </div>
+                <div class="w-full flex flex-wrap flex-col md:flex-row justify-center items-center gap-2 p-2">
+                    @if (!$schedule->isEmpty())
+                        @foreach ($schedule as $item)
+                            <div
+                                class="w-full md:max-w-[320px] flex flex-col border-gray-700 bg-gray-900 shadow-xl shadow-gray-800/100 rounded-xl border-2 py-2">
+                                <div class="flex justify-center items-center">
+                                    <h1 class="text-red-600 font-poppins font-bold text-[18px] md:text-[24px] uppercase">
+                                        day {{ $item->day }}
+                                    </h1>
+                                </div>
+                                <div class="  flex  flex-row justify-between items-center pb-2 px-2">
+                                    {{-- team 1 --}}
+                                    <div class="flex flex-col justify-center items-center max-w-[124px]">
+                                        <img src="{{ asset('storage/image/logo/' . $item->logoA) }}" alt="logo "
+                                            class=" max-w-[56px]  max-md:w-[64px]  rounded-full object-contain mb-1">
+                                        <h2 class="font-poppins font-bold text-[14px] text-center uppercase text-white ">
+                                            {{ $item->timA }}
+                                        </h2>
+                                    </div>
+                                    {{-- time --}}
+                                    <div class="flex flex-row justify-between gap-2 items-center">
+                                        <h1 class="font-kodeMono font-extrabold text-red-600 text-5xl">
+                                            {{ $item->scoreA }}
+                                        </h1>
+                                        <div class="flex flex-col justify-center items-center ">
 
+                                            <h1 class="text-white font-bold text-[16px]">
+                                                {{ (new DateTime($item->time))->format('H:i ') }}
+                                            </h1>
+                                            </h1>
+                                            <h1 class="text-white font-bold text-[12px] truncate text-center">
+                                            {{ (\Carbon\Carbon::parse($item->date)->translatedFormat('d F Y')) }}
+                                            </h1>
+                                        </div>
+                                        <h1 class="font-kodeMono font-extrabold text-red-600 text-5xl">
+                                            {{ $item->scoreB }}
+                                        </h1>
+                                    </div>
+                                    {{-- team 2 --}}
+                                    <div class="flex flex-col justify-center items-center max-w-[124px]">
+                                        <img src="{{ asset('storage/image/logo/' . $item->logoB) }}" alt="logo "
+                                            class=" max-w-[56px]  max-md:w-[64px]  rounded-full object-contain mb-1">
+                                        <h2 class="font-poppins font-bold text-[14px] text-center uppercase text-white ">
+                                            {{ $item->timB }}
+                                        </h2>
+                                    </div>
+                                    {{-- button --}}
+                                    {{-- end of one match --}}
+                                </div>
+                                <div class="flex flex-row justify-start gap-2 items-center px-3">
+                                    <a type="button" href="{{ route('schedule.edit', $item->id) }}"
+                                        class=" text-white  focus:ring-4 focus:outline-none font-poppins  font-medium rounded-lg text-sm px-3 py-1.5 md:py-2 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
+                                        <x-uiw-edit class="w-4 md:w-5" />
+                                    </a>
+                                    <button data-modal-target="schedule-delete{{ $item->id }}"
+                                        data-modal-toggle="schedule-delete{{ $item->id }}" type="button"
+                                        class=" text-white  focus:ring-4 focus:outline-none font-poppins  font-medium rounded-lg text-sm px-3 py-1.5 md:py-2 text-center bg-red-600 hover:bg-red-700 focus:ring-red-800">
+                                        <x-uiw-delete class="w-4 md:w-5" />
+                                    </button>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        <h3 class="text-center text-sm md:text-lg text-gray-300 font-semibold">
+                            Tidak ada jadwal pertindingan.
+                        </h3>
+                    @endif
                 </div>
                 <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4"
                     aria-label="Table navigation">
@@ -173,10 +170,9 @@
                                 <div class="p-4 bg-gray-900 border border-gray-600 rounded-lg space-y-4">
                                     <h3 class="text-lg font-semibold font-kodeMono text-white">Match <span
                                             x-text="index + 1"></span></h3>
-
                                     <!-- Tim A -->
                                     <div class="flex md:flex-row gap-2">
-                                        <div>
+                                        <div class="w-full">
                                             <label :for="'timA-' + index" class="block text-sm font-medium text-white">Tim
                                                 A</label>
                                             <select :id="'timA-' + index" x-model="match.timA"
@@ -188,14 +184,11 @@
                                                 @endforeach
                                             </select>
                                         </div>
-
-
                                     </div>
 
                                     <!-- Tim B -->
                                     <div class="flex md:flex-row gap-2">
-
-                                        <div>
+                                        <div class="w-full">
                                             <label :for="'timB-' + index" class="block text-sm font-medium text-white">Tim
                                                 B</label>
                                             <select :id="'timB-' + index" x-model="match.timB"
@@ -210,16 +203,18 @@
 
                                     </div>
                                     <!-- Time -->
-                                    <div class="flex md:flex-row gap-2">
-                                        <div>
+                                    <div class="flex flex-col md:flex-row gap-2">
+                                        <div class="w-full">
                                             <label :for="'day-' + index" class="block text-sm font-medium text-white">
                                                 Day
                                             </label>
-                                            <input type="text" :id="'day-' + index" x-model="match.day"
+                                            <input type="number" :id="'day-' + index" x-model="match.day"
                                                 x-bind:name="'matches[' + index + '][day]'"
                                                 class="border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light">
                                         </div>
-                                        <div>
+                                    </div>
+                                    <div class="flex flex-row gap-2">
+                                        <div class="w-full">
                                             <label :for="'time-' + index" class="block text-sm font-medium text-white">
                                                 Time
                                             </label>
@@ -227,7 +222,7 @@
                                                 x-bind:name="'matches[' + index + '][time]'"
                                                 class="border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light">
                                         </div>
-                                        <div>
+                                        <div class="w-full">
                                             <label :for="'date-' + index" class="block text-sm font-medium text-white">
                                                 Date
                                             </label>
@@ -243,7 +238,7 @@
                                         class="text-white hover:bg-red-700 text-sm mt-2 bg-red-600 p-2 rounded-xl">
                                         Remove
                                     </button>
-                                </div>
+
                             </template>
 
                             <div class="flex justify-between">
@@ -308,6 +303,129 @@
             </div>
         </div>
     @endforeach
+
+    {{-- modal filter --}}
+    <div id="filter" tabindex="-1"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-md max-h-full">
+            <div class="relative  rounded-lg shadow bg-gray-800">
+                <button type="button"
+                    class="absolute top-3 end-2.5 text-gray-400 bg-transparent  rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center hover:bg-gray-600 hover:text-white"
+                    data-modal-hide="filter">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+                <div class="p-4 md:p-5">
+                    <div class="flex justify-center items-center p-4">
+                        <x-uiw-filter class="w-12 h-12 text-center text-white font-bold" />
+                    </div>
+                    <form action="{{ route('schedule.admin') }}" method="GET">
+                        <div class="flex justify-end md:flex-row flex-col gap-2 md:gap-0">
+                            <div class="flex justify-start flex-col mx-0 md:mx-2 w-full">
+                                <label label="No. Whatsapp" class="block mb-2 text-sm font-medium text-white capitalize">
+                                    Tim
+                                </label>
+                                <select name="tim"
+                                    class="bg-gray-900 text-white p-1 rounded focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent w-full">
+                                    <option value="">tim</option>
+                                    @foreach ($squads as $item)
+                                        <option value="{{ $item->squad }}">{{ $item->squad }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="flex justify-start flex-col mx-0 md:mx-2">
+                                <label label="No. Whatsapp" class="block mb-2 text-sm font-medium text-white capitalize">
+                                    Day
+                                </label>
+                                <select name="day"
+                                    class="bg-gray-900 text-white p-1 rounded focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent w-full md:w-auto">
+                                    <option value="">day</option>
+                                    @for ($i = 1; $i < 11; $i++)
+                                        <option value="{{ $i }}">{{ $i }}</option>
+                                    @endfor
+                                </select>
+                            </div>
+                        </div>
+                        <div class="w-full flex justify-end items-center py-4 gap-2">
+                            <button type="submit"
+                                class="bg-red-600 text-white p-2 rounded-md focus:outline-focus:ring-2 focus:ring-gray-200 focus:border-transparent">
+                                filter
+                            </button>
+                            <button data-modal-hide="filter" type="button"
+                                class="bg-gray-900 text-white p-2 rounded-md focus:outline-focus:ring-2 focus:ring-gray-200 focus:border-transparent">
+                                close
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- modal notification --}}
+    <div id="notification" tabindex="-1"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-md max-h-full">
+            <div class="relative  rounded-lg shadow bg-gray-800">
+                <button type="button"
+                    class="absolute top-3 end-2.5 text-gray-400 bg-transparent  rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center hover:bg-gray-600 hover:text-white"
+                    data-modal-hide="notification">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+                <div class="p-4 md:p-5">
+                    <div class="flex justify-center items-center p-4">
+                        <x-uiw-bell class="w-12 h-12 text-center text-white font-bold" />
+                    </div>
+                    <form action="{{ route('schedule.notification') }}" method="post">
+                        @csrf
+                        <div class="flex justify-start md:flex-row gap-2 md:gap-0">
+                            <div class="flex justify-start flex-col mx-0 md:mx-2 w-full">
+                                <label label="No. Whatsapp" class="block mb-2 text-sm font-medium text-white capitalize">
+                                    Day
+                                </label>
+                                <select name="day"
+                                    class="bg-gray-900 text-white p-1 rounded focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent w-full md:w-auto">
+                                    <option value="">day</option>
+                                    @for ($i = 1; $i < 11; $i++)
+                                        <option value="{{ $i }}">{{ $i }}</option>
+                                    @endfor
+                                </select>
+                            </div>
+                            <div class="flex justify-start flex-col mx-0 md:mx-2 w-full">
+                                <label label="No. Whatsapp" class="block mb-2 text-sm font-medium text-white capitalize">
+                                    Time
+                                </label>
+                                <input type="time" name="time"
+                                    class="border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-900 border-gray-800 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light">
+                            </div>
+
+                        </div>
+                        <div class="w-full flex justify-end items-center py-4 gap-2">
+                            <button type="submit"
+                                class="bg-red-600 text-white p-2 rounded-md focus:outline-focus:ring-2 focus:ring-gray-200 focus:border-transparent">
+                                Notification
+                            </button>
+                            <button data-modal-hide="notification" type="button"
+                                class="bg-gray-900 text-white p-2 rounded-md focus:outline-focus:ring-2 focus:ring-gray-200 focus:border-transparent">
+                                close
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <script>
         function scheduleAdd() {
