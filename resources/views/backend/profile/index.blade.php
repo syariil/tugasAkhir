@@ -2,7 +2,7 @@
 @section('title', 'profile')
 @section('content')
     <section class="flex flex-col justify-center items-center relative py-4 mt-14 px-6">
-        <div class="flex flex-col justify-center  bg-gray-800 w-full  rounded-3xl">
+        <div class="flex flex-col justify-center   w-full  rounded-3xl">
             @if ($message = Session::get('success'))
                 <div class="flex justify-center py-4 my-4">
                     <div class="text-[16px] text-gray-700 uppercase bg-green-500 rounded-3xl">

@@ -11,7 +11,8 @@
 </head>
 
 <body class="bg-gray-900">
-    <section class="bg-gray-900">
+    <div class="w-[calc(100%-256px+256px)] h-screen items-end flex justify-center bg-[url('/storage/image/logo.png')] bg-no-repeat bg-fixed bg-center bg-opacity-5 opacity-10 bg-cover fixed z-[-10]"></div>
+    <section>
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen h-auto ">
             <a href="{{ url('/') }}"
                 class="flex items-center mb-6 text-4xl font-bold text-white font-kodeMono uppercase">

@@ -33,7 +33,7 @@ class ScheduleController extends Controller
             ->join('tims as timA', 'timA.id', '=', 'schedules.id_timA')
             ->join('tims as timB', 'timB.id', '=', 'schedules.id_timB')
             ->where('schedules.babak', '=', $babak) // Filter berdasarkan babak
-            ->orderBy('schedules.day', 'desc');
+            ->orderBy('schedules.id', 'desc');
 
         // Terapkan filter season
         if (!empty($tim)) {
@@ -49,7 +49,7 @@ class ScheduleController extends Controller
         }
 
         // Pagination
-        $schedule = $query->paginate(6);
+        $schedule = $query->paginate(15);
         // dd($schedule->items()[0]);
 
         // Ambil data tim untuk dropdown (season terkait)
@@ -78,7 +78,7 @@ class ScheduleController extends Controller
                 'timB.logo as logoB'
             )
             ->join('tims as timA', 'timA.id', '=', 'schedules.id_timA')
-            ->join('tims as timB', 'timB.id', '=', 'schedules.id_timB')->orderBy('schedules.babak', 'desc')->where('timA.id', '=', $id->id)->orWhere('timB.id', '=', $id->id)->get();
+            ->join('tims as timB', 'timB.id', '=', 'schedules.id_timB')->orderBy('schedules.id', 'desc')->where('timA.id', '=', $id->id)->orWhere('timB.id', '=', $id->id)->get();
 
         // dd($query);
 

@@ -47,7 +47,7 @@
                                         {{-- team 1 --}}
                                         <div class="flex flex-col justify-center items-center max-w-[240px]">
                                             <img src="{{ asset('storage/image/logo/' . $item->logoA) }}" alt="logo "
-                                                class=" w-[72px]  md:w-[90px]  rounded-full object-contain mb-1">
+                                                class=" w-[72px]  md:w-max-[90px] max-h-[80px]  rounded-full object-contain mb-1">
                                             <h2
                                                 class="font-kodeMono font-bold text-[18px] text-center uppercase text-white ">
                                                 {{ $item->timA }}
@@ -74,7 +74,7 @@
                                         {{-- team 2 --}}
                                         <div class="flex flex-col justify-center items-center max-w-[240px]">
                                             <img src="{{ asset('storage/image/logo/' . $item->logoB) }}" alt="logo "
-                                                class=" w-[72px]  md:w-[90px]  rounded-full object-contain mb-1">
+                                                class=" w-[72px]  md:w-max-[90px] max-h-[80px]  rounded-full object-contain mb-1">
                                             <h2
                                                 class="font-kodeMono font-bold text-[18px] text-center uppercase text-white ">
                                                 {{ $item->timB }}

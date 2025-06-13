@@ -17,6 +17,9 @@
 </head>
 
 <body class="bg-gray-900">
+    {{-- background image --}}
+    
+    {{-- navbar --}}
     <nav
         class="bg-gray-900 border-gray-400 rounded-b-2xl w-full border-b-1  shadow-xl shadow-gray-800/50 rounded-xl fixed z-[9999px]">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -61,8 +64,8 @@
 
 
     {{-- content --}}
-    <main class="w-full  p-6">
-
+    <main class="w-full  py-6">
+        <div class="w-[calc(100%-256px+256px)] h-screen items-end flex justify-center bg-[url('/storage/image/logo.png')] bg-no-repeat bg-fixed bg-center bg-opacity-55 opacity-10 bg-cover fixed z-[-10]"></div>
         @yield('content')
     </main>
 

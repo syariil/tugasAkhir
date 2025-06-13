@@ -2,7 +2,7 @@
 @section('title', 'Standing')
 @section('content')
     <div class="mt-14 p-2">
-        <div class="w-full bg-gray-800 rounded-3xl">
+        <div class="w-full  rounded-3xl">
             <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
                 <!-- Breadcrumb Start -->
                 <div class="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -11,7 +11,7 @@
                     </h2>
                 </div>
                 @if ($tim = Session::get('success'))
-                    <div class="flex items-center p-4 mb-4 text-sm text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800"
+                    <div class="flex items-center p-4 mb-4 text-sm text-green-800 border border-green-300 rounded-lg  bg-gray-900 dark:text-green-400 dark:border-green-800"
                         role="alert">
                         <x-uiw-notification class="w-6" />
                         <span class="sr-only">Info</span>
@@ -21,7 +21,7 @@
                     </div>
                 @endif
                 @if ($tim = Session::get('delete'))
-                    <div class="flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
+                    <div class="flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg  bg-gray-900 dark:text-red-400 dark:border-red-800"
                         role="alert">
                         <x-uiw-notification class="w-6" />
                         <span class="sr-only">Info</span>
@@ -30,7 +30,7 @@
                         </div>
                     </div>
                 @endif
-
+            </div>
 
                 {{-- content --}}
                 <div id="standingManajemen">
@@ -50,7 +50,7 @@
                                         <div class="flex justify-center w-full">
                                             <div class="flex justify-center mx-2 w-full">
                                                 <select name="season"
-                                                    class="bg-gray-800 text-white p-1 rounded focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent w-full">
+                                                    class="bg-gray-900 text-white p-1 rounded focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent w-full">
                                                     <option value="">Pilih Season</option>
                                                     @for ($i = 1; $i <= $seasons[0]->season; $i++)
                                                         <option value="{{ $i }}">
@@ -67,6 +67,8 @@
                                     </form>
                                 </div>
                             </div>
+                        </div>
+                    </div>
                             <div class="w-full flex justify-center">
                                 <table class="w-full text-sm text-gray-200 bg-gray-800 rounded-t-lg">
                                     <thead class="text-xs uppercase bg-red-700 text-white">
@@ -114,72 +116,11 @@
                                     </tbody>
                                 </table>
                             </div>
-
-                            {{-- <div class="w-full flex justify-center ">
-                                <table
-                                    class="w-full p-0 md:px-6 text-sm text-start rtl:text-righttext-gray-200 rounded-t-full ">
-                                    <thead class="text-xs uppercase bg-red-700 text-white ">
-                                        <tr>
-                                            <th scope="col" class="px-3 md:px-6 py-3">
-                                                Grup
-                                            </th>
-                                            <th scope="col" class="px-3 md:px-6 py-3">
-                                                Team
-                                            </th>
-                                            <th scope="col" class="px-3 md:px-6 py-3">
-                                                Season
-                                            </th>
-                                            <th scope="col" class="px-3 md:px-6 py-3">
-                                                Action
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php
-                                            $i = 0;
-                                        @endphp
-                                        @foreach ($arrayTim as $item)
-                                            @if (!empty($item))
-                                                <tr class=" border-b bg-gray-900 border-gray-700">
-                                                    <td
-                                                        class="px-3 md:px-6 py-4 font-medium  uppercase whitespace-nowrap text-white">
-                                                        {{ $grup[$i]['grup'] }}
-                                                    </td>
-                                                    <td
-                                                        class="px-3 md:px-6 py-4 font-medium  uppercase whitespace-normal text-white">
-                                                        <div class="flex flex-col justify-center item-center">
-                                                            @foreach ($item as $squad)
-                                                                @if ($squad['id_grup'] == $grup[$i]['id_grup'])
-                                                                    <span>- {{ $squad['squad'] }}</span>
-                                                                @endif
-                                                            @endforeach
-
-                                                        </div>
-                                                    </td>
-                                                    <td
-                                                        class="px-3 md:px-6 py-4 font-medium  uppercase whitespace-nowrap text-white">
-                                                        {{ $grup[$i]['season'] }}
-                                                    </td>
-                                                    <td
-                                                        class="py-4 px-2 md:px-6 flex flex-col  gap-4  whitespace-nowrap items-center  justify-center">
-                                                        <a href="{{ route('standing.edit', $grup[$i]['id_grup']) }}"
-                                                            class="font-medium text-white  px-4 py-2 rounded-lg  bg-blue-600 hover:underline items-center flex justify-center">
-                                                            <x-uiw-edit class="w-5 " />
-                                                        </a>
-                                                </tr>
-                                            @endif
-                                            @php
-                                                $i++;
-                                            @endphp
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div> --}}
-                        </div>
+                        {{-- end content --}}
+        </div>
                     </div>
-                </div>
-                {{-- end content --}}
             </div>
+            
         </div>
 
 

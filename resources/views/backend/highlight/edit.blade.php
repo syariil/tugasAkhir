@@ -2,7 +2,7 @@
 @section('title', 'Highlight edit')
 @section('content')
     <div class="p-4 mt-14">
-        <div class="w-full bg-gray-800 rounded-3xl">
+        <div class="w-full  rounded-3xl">
             <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
                 <!-- Breadcrumb Start -->
                 <div class="mb-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -17,13 +17,13 @@
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('put')
-                                <div class="p-4 bg-gray-900 border border-gray-600 rounded-lg space-y-4">
+                                <div class="p-4      rounded-lg space-y-4">
                                     <!-- Tim A -->
                                     <div class="flex md:flex-row gap-2">
                                         <div>
                                             <label class="block text-sm font-medium text-white">Judul</label>
                                             <input type="text" name="judul" value="{{ $highlight->judul }}"
-                                                class="border w-full  text-sm rounded-lg  block p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light">
+                                                class="border w-full  text-sm rounded-lg  block p-2.5 bg-gray-900 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light">
                                             @error('judul')
                                                 <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins">
                                                     {{ $message }}</p>
@@ -35,7 +35,7 @@
                                                 URL
                                             </label>
                                             <input type="text" name="url" value="{{ $highlight->url }}"
-                                                class="border w-full  text-sm rounded-lg  block p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light">
+                                                class="border w-full  text-sm rounded-lg  block p-2.5 bg-gray-900 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light">
                                             @error('url')
                                                 <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins">
                                                     {{ $message }}</p>
@@ -48,7 +48,7 @@
                                                 Thumbnail
                                             </label>
                                             <input name="thumbnail"
-                                                class="block w-full md:w-sm text-sm border rounded-lg cursor-pointer  text-gray-400 focus:outline-none bg-gray-700 border-gray-600 placeholder-gray-400"
+                                                class="block w-full md:w-sm text-sm border rounded-lg cursor-pointer  text-gray-400 focus:outline-none bg-gray-900 border-gray-600 placeholder-gray-400"
                                                 type="file">
                                             @error('thumbnail')
                                                 <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins">

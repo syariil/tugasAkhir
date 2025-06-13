@@ -2,12 +2,12 @@
 @section('title', 'highlight')
 @section('content')
     <div class="p-4 mt-14">
-        <section class="bg-gray-800 w-full p-1 sm:p-5">
+        <section class=" w-full p-1 sm:p-5">
             <h1 class="text-white font-poppins text-[24px] border-x-black border-b-2 uppercase font-bold">
                 Highlight
             </h1>
             <div class="w-full px-1">
-                <div class="bg-gray-800  relative shadow-md sm:rounded-lg overflow-hidden">
+                <div class="  relative shadow-md sm:rounded-lg overflow-hidden">
                     <div
                         class="flex flex-col-reverse gap-3 md:gap-0 md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                         <div class="w-full md:w-1/3">
@@ -18,7 +18,7 @@
                                         <x-uiw-search class="w-5 h-5 text-gray-500 " />
                                     </div>
                                     <input type="text" id="search" value="{{ request('search') }}" name="search"
-                                        class="bg-gray-900 border border-gray-600 text-white text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full pl-10 p-2   placeholder-gray-500   "
+                                        class="bg-gray-800 border border-gray-600 text-white text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full pl-10 p-2   placeholder-gray-500   "
                                         placeholder="cari judul...">
                                 </div>
                             </form>

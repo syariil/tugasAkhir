@@ -3,7 +3,7 @@
 @section('content')
 
 
-
+    
     @if ($banner != null)
         <div class="w-full h-auto flex justify-center items-center p-4 mt-14">
             <img src="{{ asset('storage/image/banner/' . $banner[0]->banner) }}" alt="banner"
@@ -49,7 +49,6 @@
                 </div>
             </div>
         @endif
-
     </div>
 
 

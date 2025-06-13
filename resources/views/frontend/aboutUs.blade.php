@@ -3,7 +3,7 @@
 @section('content')
 
     <section class="mt-14">
-        <div class="min-h-screen bg-gray-900 text-white mt-4">
+        <div class="min-h-screen  text-white mt-4">
             <div class="container mx-auto py-10">
                 <!-- Header -->
                 <div class="flex items-center justify-between mb-8">
@@ -15,7 +15,7 @@
                     </div>
                     <div>
                         <img src="{{ asset('storage/image/logo1.png') }}" alt="Logo Turnamen"
-                            class="md:w-[150px] w-20 h-20 md:h-[150px] rounded-full border-2 object-fill border-gray-700">
+                            class="md:w-[150px] w-20 h-20 md:h-[150px] rounded-full border-2 object-fill border-gray-400">
                     </div>
                 </div>
 

@@ -285,7 +285,7 @@
     <div class="w-full items-start mb-2 md:mb-9">
         <x-heading name="FAQ" margin="2" />
         <div id="accordion-collapse" data-accordion="collapse"
-            class="w-full my-2 px-2 md:px-14 py-4 rounded-md bg-gray-800 ">
+            class="w-full my-2 px-2 md:px-14 py-4 rounded-md  ">
             <h2 id="harga">
                 <button type="button"
                     class="flex items-center justify-between w-full p-4 font-medium rtl:text-right  border border-b-0  rounded-t-xl focus:ring-2 focus:ring-gray-900  border-gray-700 text-white bg-gray-900 hover:bg-gray-700  gap-3"

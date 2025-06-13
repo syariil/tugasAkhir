@@ -2,12 +2,12 @@
 @section('title', 'Tim')
 @section('content')
     <div class="md:p-4 mt-14">
-        <section class="bg-gray-800 w-full p-1 sm:p-5">
+        <section class=" w-full p-1 sm:p-5">
             <h1 class="text-white font-poppins text-[24px] border-x-black border-b-2 uppercase font-bold">
                 Tim List
             </h1>
             <div class="w-full px-1">
-                <div class="bg-gray-800  relative shadow-md sm:rounded-lg overflow-hidden">
+                <div class=" relative shadow-md sm:rounded-lg overflow-hidden">
                     <div
                         class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                         <div class="w-full md:w-1/3">
@@ -18,7 +18,7 @@
                                         <x-uiw-search class="w-5 h-5 text-gray-500 " />
                                     </div>
                                     <input type="text" id="search" value="{{ request('search') }}" name="search"
-                                        class="bg-gray-900 border border-gray-600 text-white text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full pl-10 p-2   placeholder-gray-500   "
+                                        class="bg-gray-900 border border-white text-white text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full pl-10 p-2   placeholder-gray-500   "
                                         placeholder="cari tim...">
                                 </div>
                             </form>
@@ -27,7 +27,7 @@
                             <form class="flex items-center gap-2 md:gap-0" method="GET" action="{{ route('tim.index') }}">
                                 <div class="flex justify-start mx-0 md:mx-2 w-full">
                                     <select name="season"
-                                        class="bg-gray-800 text-white p-1 rounded focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent w-full">
+                                        class="bg-gray-900 text-white p-1 rounded focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent w-full">
                                         <option value="">Season</option>
                                         @for ($i = $season; $i != 0; $i--)
                                             <option value="{{ $i }}">{{ $i }}</option>
@@ -35,13 +35,13 @@
                                     </select>
                                 </div>
                                 <button type="submit"
-                                    class="bg-red-600 text-white p-2 rounded-md focus:outline-focus:ring-2 focus:ring-gray-200 focus:border-transparent">
+                                    class="bg-red-600 text-white px-2 py-1.5 rounded-md focus:outline-focus:ring-2 focus:ring-gray-200 focus:border-transparent">
                                     filter
                                 </button>
                             </form>
                         </div>
                     </div>
-                    <div class="overflow-x-auto p-1 bg-gray-900">
+                    <div class="overflow-x-auto p-1">
                         @if ($update = Session::get('update'))
                             <div class="flex items-center p-4 mb-4 text-sm text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800"
                                 role="alert">

@@ -2,9 +2,9 @@
 @section('title', 'Dashboard')
 @section('content')
     <div class="p-0">
-        <div
+        {{-- <div
             class="w-[calc(100%-256px+256px)] h-screen items-end flex justify-center bg-dashboard bg-no-repeat bg-fixed bg-center bg-opacity-5 opacity-10 bg-cover fixed z-[-10]">
-        </div>
+        </div> --}}
         <div class=" h-screen w-full flex items-center justify-center">
             <div class="block">
                 <h1

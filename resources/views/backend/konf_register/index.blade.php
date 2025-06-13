@@ -2,7 +2,7 @@
 @section('title', 'registration')
 @section('content')
     <div class="p-4 mt-14">
-        <section class="w-full bg-gray-800 p-1 sm:p-5 rounded-3xl">
+        <section class="w-full  p-1 sm:p-5 rounded-3xl">
             <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
                 <!-- Breadcrumb Start -->
                 <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">

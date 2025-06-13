@@ -2,7 +2,7 @@
 @section('title', 'grup')
 @section('content')
     <div class="mt-14 p-2">
-        <div class="w-full bg-gray-800 rounded-3xl">
+        <div class="w-full  rounded-3xl">
             <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
                 <!-- Breadcrumb Start -->
                 <div class="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -50,7 +50,7 @@
                                         <div class="flex justify-center">
                                             <div class="flex justify-center mx-2">
                                                 <select name="status"
-                                                    class="bg-gray-800 text-white p-1 rounded focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent">
+                                                    class="bg-gray-900 text-white p-1 rounded focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent">
                                                     <option value="">seasson</option>
                                                     <option value="1">1</option>
                                                 </select>

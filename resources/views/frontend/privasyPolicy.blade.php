@@ -3,7 +3,7 @@
 @section('content')
 
 
-    <div class="min-h-screen bg-gray-900 text-white mt-14 py-4">
+    <div class="min-h-screen  text-white mt-14 py-4">
         <div class="container mx-auto py-10">
             <!-- Header -->
             <div class="text-center mb-8">

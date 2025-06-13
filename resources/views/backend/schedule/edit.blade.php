@@ -2,7 +2,7 @@
 @section('title', 'Schedule')
 @section('content')
     <div class="p-4 mt-14">
-        <div class="w-full bg-gray-800 rounded-3xl">
+        <div class="w-full rounded-3xl">
             <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
                 <!-- Breadcrumb Start -->
                 <div class="mb-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -10,13 +10,13 @@
                         edit macth
                     </h2>
                 </div>
-                <div class="w-full flex flex-wrap flex-col md:flex-row justify-start gap-2 p-2">
+                <div class="w-full flex flex-wrap flex-col md:flex-row justify-center gap-2 p-2">
                     <div class="flex w-full justify-center items-center ">
                         <div class="w-full">
                             <form method="POST" action="{{ route('schedule.update', $schedule->id) }}">
                                 @csrf
                                 @method('put')
-                                <div class="p-4 bg-gray-900 border border-gray-600 rounded-lg space-y-4">
+                                <div class="p-4 border border-white border-dotted rounded-lg space-y-4">
                                     <div
                                         class="flex flex-col md:flex-row justify-between md:justify-start text-[38px] font-semibold font-kodeMono text-white items-center gap-0 md:gap-2">
                                         <h1>
@@ -28,7 +28,7 @@
                                         <h1>
                                             vs
                                         </h1>
-                                        <h1 class="text-blue-700">
+                                        <h1 class="text-blue-600">
                                             {{ $schedule->timB }}
 
                                         </h1>
@@ -36,7 +36,7 @@
                                     </div>
 
                                     <!-- Tim A -->
-                                    <div class="flex md:flex-row gap-2">
+                                    <div class="flex flex-col md:flex-row gap-2">
                                         <div>
                                             <label class="block text-sm font-medium text-white">Tim
                                                 A</label>
@@ -84,7 +84,7 @@
                                     </div>
 
                                     <!-- Tim B -->
-                                    <div class="flex md:flex-row gap-2">
+                                    <div class="flex flex-col md:flex-row gap-2">
                                         <div>
                                             <label class="block text-sm font-medium text-white">
                                                 Tim B
@@ -132,7 +132,7 @@
                                         </div>
                                     </div>
                                     <!-- Time -->
-                                    <div class="flex md:flex-row gap-2">
+                                    <div class="flex flex-col md:flex-row gap-2">
                                         <div>
                                             <label class="block text-sm font-medium text-white">
                                                 Day

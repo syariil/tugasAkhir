@@ -2,8 +2,8 @@
 @section('title', 'grup')
 @section('content')
     <div class="mt-14 p-2">
-        <section class="bg-gray-800  p-3 sm:p-5 min-h-screen">
-            <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10 bg-gray-900 rounded-xl">
+        <section class="  p-3 sm:p-5 min-h-screen">
+            <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10 bg-gray-800 rounded-xl">
                 <!-- Breadcrumb Start -->
                 <h1 class="text-white font-poppins text-[24px] border-x-white border-b-2 uppercase font-bold">
                     Edit Grup
@@ -21,7 +21,7 @@
                                                 Grup
                                             </label>
                                             <input type="text" id="grup" name="grup" value="{{ $grup->grup }}"
-                                                class="block w-full md:w-sm text-sm border rounded-lg cursor-pointer  text-gray-400 focus:outline-none bg-gray-700 border-gray-600 placeholder-gray-400 focus:ring-red-500 focus:border-red-500">
+                                                class="block w-full md:w-sm text-sm border rounded-lg cursor-pointer  text-gray-400 focus:outline-none bg-gray-900 border-gray-600 placeholder-gray-400 focus:ring-red-500 focus:border-red-500">
                                             @error('grup')
                                                 <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins">
                                                     {{ $message }}</p>
@@ -32,7 +32,7 @@
                                                 Season
                                             </label>
                                             <input type="numeric" id="season" aria-label="disabled input" name="season"
-                                                class="mb-6  border   text-sm rounded-lg   block w-full p-2.5 cursor-not-allowed bg-gray-700 border-gray-600 placeholder-gray-400 text-gray-400 focus:ring-red-500 focus:border-red-500"
+                                                class="mb-6  border   text-sm rounded-lg   block w-full p-2.5 cursor-not-allowed bg-gray-900 border-gray-600 placeholder-gray-400 text-gray-400 focus:ring-red-500 focus:border-red-500"
                                                 value="{{ $grup->season }}" disabled>
                                             @error('season')
                                                 <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins">

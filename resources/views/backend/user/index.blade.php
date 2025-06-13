@@ -2,12 +2,12 @@
 @section('title', 'User managemen')
 @section('content')
     <div class="md:p-4 mt-14">
-        <section class="bg-gray-800 w-full p-1 sm:p-5">
+        <section class=" w-full p-1 sm:p-5">
             <h1 class="text-white font-poppins text-[24px] border-x-black border-b-2 uppercase font-bold">
                 User List
             </h1>
             <div class="w-full px-1">
-                <div class="bg-gray-800  relative shadow-md sm:rounded-lg overflow-hidden">
+                <div class="  relative shadow-md sm:rounded-lg overflow-hidden">
                     <div
                         class="flex flex-col-reverse gap-3 md:gap-0 md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                         <div class="w-full md:w-1/3">

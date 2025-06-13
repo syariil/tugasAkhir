@@ -2,7 +2,7 @@
 @section('title', 'standings')
 @section('content')
     <div class="p-4 mt-14">
-        <section class="w-full bg-gray-800 rounded-3xl p-1 sm:p-5">
+        <section class="w-full  rounded-3xl p-1 sm:p-5">
             <div class="mx-auto max-w-screen-2xl relative  2xl:p-10">
                 <!-- Breadcrumb Start -->
                 <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">

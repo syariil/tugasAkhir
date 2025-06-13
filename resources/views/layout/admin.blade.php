@@ -27,6 +27,7 @@
     {{-- content --}}
     <main class="sm:ml-64">
         <div class=" {{ request()->is('/admin') ? 'mt-14' : 'mt-16 md:mt-0' }}">
+            <div class="w-[calc(100%-256px+256px)] h-screen items-end flex justify-center bg-[url('/storage/image/logo.png')] bg-no-repeat bg-fixed bg-center bg-opacity-5 opacity-10 bg-cover fixed z-[-10]"></div>
             @yield('content')
 
         </div>

@@ -9,8 +9,8 @@
                 <li>System</li>
             </ol>
         </nav>
-        <section class="bg-gray-800  p-3 sm:p-5 min-h-screen">
-            <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10 bg-gray-900 rounded-xl">
+        <section class="  p-3 sm:p-5 min-h-screen">
+            <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10  rounded-xl">
                 <!-- Breadcrumb Start -->
                 <h1 class="text-white font-poppins text-[24px] border-x-white border-b-2 uppercase font-bold">
                     Systems
@@ -38,7 +38,7 @@
                                                 Banner
                                             </label>
                                             <input type="file" id="banner" name="banner"
-                                                class="block w-full md:w-sm text-sm border rounded-lg cursor-pointer  text-gray-400 focus:outline-none bg-gray-700 border-gray-600 placeholder-gray-400">
+                                                class="block w-full md:w-sm text-sm border rounded-lg cursor-pointer  text-gray-400 focus:outline-none bg-gray-900 border-red-600 placeholder-gray-400">
                                             @error('banner')
                                                 <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins">
                                                     {{ $message }}</p>
@@ -60,7 +60,7 @@
                                                 Playoff Banner
                                             </label>
                                             <input type="file" id="playoff_banner" name="playoff_banner"
-                                                class="block w-full md:w-sm text-sm border rounded-lg cursor-pointer  text-gray-400 focus:outline-none bg-gray-700 border-gray-600 placeholder-gray-400">
+                                                class="block w-full md:w-sm text-sm border rounded-lg cursor-pointer  text-gray-400 focus:outline-none bg-gray-900 border-red-600 placeholder-gray-400">
                                             @error('playoff_banner')
                                                 <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins">
                                                     {{ $message }}</p>
@@ -82,7 +82,7 @@
                                         </label>
                                         @if ($system == null)
                                             <select name="babak" id="babak"
-                                                class="w-full  border   text-sm rounded-lg  block p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
+                                                class="w-full  border   text-sm rounded-lg  block p-2.5 bg-gray-900 border-red-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
                                                 @foreach ($babak as $item)
                                                     <option value="{{ $item }}" class="capitalize">
                                                         {{ $item }}
@@ -91,7 +91,7 @@
                                             </select>
                                         @else
                                             <select name="babak" id="babak"
-                                                class="w-full  border   text-sm rounded-lg  block p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
+                                                class="w-full  border   text-sm rounded-lg  block p-2.5 bg-gray-900 border-red-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
                                                 @foreach ($babak as $item)
                                                     <option value="{{ $item }}" class="capitalize"
                                                         {{ old('babak', $system->babak ?? '') == $item ? 'selected' : '' }}>
@@ -113,7 +113,7 @@
                                             </label>
                                             <input type="numeric" id="season" name="season"
                                                 value="{{ isset($system) ? $system->season : '' }}"
-                                                class="border  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light">
+                                                class="border  text-sm rounded-lg  block w-full p-2.5 bg-gray-900 border-red-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light">
                                             @error('season')
                                                 <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins">
                                                     {{ $message }}</p>
@@ -124,7 +124,7 @@
                                                 Registration
                                             </label>
                                             <select name="registration" id="babak"
-                                                class="w-full  border   text-sm rounded-lg  block p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
+                                                class="w-full  border   text-sm rounded-lg  block p-2.5 bg-gray-900 border-red-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
                                                 @if (isset($system))
                                                     @foreach ($registration as $item)
                                                         <option value="{{ $item['value'] }}" class="capitalize"
@@ -152,7 +152,7 @@
                                                 Schedule
                                             </label>
                                             <select name="schedule" id="babak"
-                                                class="w-full  border   text-sm rounded-lg  block p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
+                                                class="w-full  border   text-sm rounded-lg  block p-2.5 bg-gray-900 border-red-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
                                                 @if (isset($system))
                                                     @foreach ($schedule as $item)
                                                         <option value="{{ $item['value'] }}" class="capitalize"
@@ -179,7 +179,7 @@
                                             </label>
                                             <input type="numeric" id="poin" name="poin"
                                                 value="{{ isset($system) ? $system->poin : '' }}"
-                                                class="border  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light">
+                                                class="border  text-sm rounded-lg  block w-full p-2.5 bg-gray-900 border-red-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light">
                                             @error('poin')
                                                 <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins">
                                                     {{ $message }}</p>
@@ -193,7 +193,7 @@
                                             </label>
                                             <input type="numeric" id="no_rek" name="no_rek"
                                                 value="{{ isset($system) ? $system->no_rek : '' }}"
-                                                class="border  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light">
+                                                class="border  text-sm rounded-lg  block w-full p-2.5 bg-gray-900 border-red-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light">
                                             @error('no_rek')
                                                 <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins">
                                                     {{ $message }}</p>
@@ -205,7 +205,7 @@
                                             </label>
                                             <input type="text" id="bank" name="bank"
                                                 value="{{ isset($system) ? $system->bank : '' }}"
-                                                class="border  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light">
+                                                class="border  text-sm rounded-lg  block w-full p-2.5 bg-gray-900 border-red-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light">
                                             @error('bank')
                                                 <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins">
                                                     {{ $message }}</p>
@@ -218,7 +218,7 @@
                                         </label>
                                         <input type="numeric" id="fee-input" name="fee"
                                             value="{{ isset($system) ? number_format($system->fee, 0, ',', '.') : '' }}"
-                                            class="border  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light">
+                                            class="border  text-sm rounded-lg  block w-full p-2.5 bg-gray-900 border-red-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light">
                                         @error('fee')
                                             <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins">
                                                 {{ $message }}</p>
