@@ -20,6 +20,14 @@
 </head>
 
 <body class="bg-gray-900">
+     <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 ">
+        <div class="flex-col gap-4 w-full flex items-center justify-center">
+            <div class="w-28 h-28 border-8 text-red-600 text-4xl animate-spin border-gray-300 flex items-center justify-center border-t-red-600 rounded-full">
+                <img src="{{ asset('storage/image/logo/logo.png') }}" class="w-12 h-12 rounded-full animate-ping" alt="Kabaena Logo" />
+            </div>
+        </div>
+    </div>
     {{-- sidebar --}}
     @include('components.admin.sidebar')
 

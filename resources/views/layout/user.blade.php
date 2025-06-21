@@ -11,14 +11,27 @@
     <!-- Fonts -->
     {{-- <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" /> --}}
+    <meta name="app-url" content="{{ config('app.url') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <!-- Styles -->
 
 </head>
 
 <body class="bg-gray-900">
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 ">
+        <div class="flex-col gap-4 w-full flex items-center justify-center">
+            <div
+                class="w-28 h-28 border-8 text-red-600 text-4xl animate-spin border-gray-300 flex items-center justify-center border-t-red-600 rounded-full">
+                <img src="{{ asset('storage/image/logo/logo.png') }}" class="w-12 h-12 rounded-full animate-ping"
+                    alt="Kabaena Logo" />
+            </div>
+        </div>
+    </div>
+
+
     {{-- background image --}}
-    
+
     {{-- navbar --}}
     <nav
         class="bg-gray-900 border-gray-400 rounded-b-2xl w-full border-b-1  shadow-xl shadow-gray-800/50 rounded-xl fixed z-[9999px]">
@@ -43,7 +56,7 @@
                 </button>
             </div>
             <div class="md:block w-full hidden md:w-auto" id="navbar-default">
-                <ul class="font-medium flex flex-row  p-0 mt-0  rounded-lg space-x-0 md:space-x-8">
+                <ul class="font-medium flex flex-row  mt-4 md:p-0 md:mt-0  rounded-lg space-x-0 md:space-x-8">
                     <li>
                         <a href="{{ url('/') }}"
                             class="block py-2 px-2 md:px-3   rounded  md:p-0 hover:text-red-600 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 hover:underline hover:text-[16px] md:hover:text-[18px] {{ request()->is('/') ? 'text-red-600 text-[16px] md:text-[18px] underline -translate-y-1 scale-110' : 'text-white text-[14px] md:text-[16px] font-poppins' }}"
@@ -57,6 +70,10 @@
                         <a href=" {{ url('/register') }} "
                             class="block py-2 px-2 md:px-3  rounded md:p-0 text-[14px] hover:text-red-600 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 hover:underline hover:text-[16px] md:hover:text-[18px] {{ request()->is('register') ? 'text-red-600 text-[16px] md:text-[18px] underline -translate-y-1 scale-110' : 'text-white text-[14px] md:text-[16px] font-poppins' }} ">Registration</a>
                     </li>
+                    <li>
+                        <a href=" {{ url('/about-us') }} "
+                            class="block py-2 px-2 md:px-3  rounded md:p-0 text-[14px] hover:text-red-600 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 hover:underline hover:text-[16px] md:hover:text-[18px] {{ request()->is('about-us') ? 'text-red-600 text-[16px] md:text-[18px] underline -translate-y-1 scale-110' : 'text-white text-[14px] md:text-[16px] font-poppins' }} ">About</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -65,7 +82,9 @@
 
     {{-- content --}}
     <main class="w-full  py-6">
-        <div class="w-[calc(100%-256px+256px)] h-screen items-end flex justify-center bg-[url('/storage/image/logo.png')] bg-no-repeat bg-fixed bg-center bg-opacity-55 opacity-10 bg-cover fixed z-[-10]"></div>
+        <div
+            class="w-[calc(100%-256px+256px)] md:h-screen h-full items-end flex justify-center bg-[url('/storage/image/logo/logo.png')] bg-no-repeat bg-fixed bg-center bg-opacity-55 opacity-10 bg-cover fixed z-[-10]">
+        </div>
         @yield('content')
     </main>
 
@@ -121,6 +140,5 @@
     </footer>
 
 </body>
-<script src=""></script>
 
 </html>

@@ -54,8 +54,18 @@ Route::get("/test", [TestController::class, "index"])->name("test");
 Route::get('/test/{id}/view', [TestController::class, 'view'])->name('test.view');
 Route::get('/test/{id}/edit', [TestController::class, 'edit'])->name('test.edit');
 
+Route::get("/api/schedules/{day}", [ScheduleController::class, "getSchedules"])->name("schedule.api");
+Route::get("/api/standings/{id_grup}", [ScheduleController::class, "getStandings"])->name("standing.api");
+// get grup
+Route::get("/api/grups", [GrupController::class, "getGrups"])->name("grup.api");
+
+// schedule test
+Route::get("/schedule-test", [ScheduleController::class, "scheduleTest"])->name("schedule.test");
+
+
 
 Route::middleware(['auth'])->group(function () {
+    // get schedule api
     Route::get("/admin", [DashboardController::class, "index"])->name("dashboard")->middleware('role:admin,peserta');
 
     Route::middleware(['role:admin,peserta'])->group(function () {
@@ -66,6 +76,9 @@ Route::middleware(['auth'])->group(function () {
 
         // schedule
         Route::get("/admin/schedule/{id}", [BackendScheduleController::class, "view"])->name("schedule.admin.view");
+
+        // standing
+        Route::get("/admin/standing", [StandingController::class, "index"])->name("standing.index");
     });
 
     Route::middleware('role:admin')->group(function () {
@@ -102,7 +115,7 @@ Route::middleware(['auth'])->group(function () {
 
 
         // stending
-        Route::get("/admin/standing", [StandingController::class, "index"])->name("standing.index");
+
         Route::get("/admin/standing/{id}/edit", [StandingController::class, "edit"])->name("standing.edit");
         Route::get("/admin/standing/standing/{id}/edit", [StandingController::class, "editStanding"])->name("standing.editStanding");
         Route::put("/admin/standing/{id}/edit", [StandingController::class, "update"])->name("standing.update");

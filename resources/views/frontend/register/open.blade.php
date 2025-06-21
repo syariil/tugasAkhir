@@ -27,7 +27,7 @@
                         Ketua
                     </label>
                     <input type="text" name="leader" value="{{ old('leader') }}"
-                        class=" border  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
+                        class=" border  text-sm rounded-lg  block w-full p-2.5 bg-gray-900 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
                         placeholder="Nama ketua" />
                     @error('leader')
                         <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
@@ -40,7 +40,7 @@
                         No. Whatsapp
                     </label>
                     <input type="number" name="no_whatsapp" value="{{ old('no_whatsapp') }}"
-                        class=" border  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
+                        class=" border  text-sm rounded-lg  block w-full p-2.5 bg-gray-900 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
                         placeholder="Nomor whatsapp ketua" />
                     @error('no_whatsapp')
                         <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
@@ -53,7 +53,7 @@
                         Squad
                     </label>
                     <input type="text" name="squad" value="{{ old('squad') }}"
-                        class=" border  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
+                        class=" border  text-sm rounded-lg  block w-full p-2.5 bg-gray-900 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
                         placeholder="nama Squad" />
                     @error('squad')
                         <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
@@ -64,7 +64,7 @@
                         Short Squad
                     </label>
                     <input type="text" name="short_squad" value="{{ old('short_squad') }}"
-                        class=" border  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
+                        class=" border  text-sm rounded-lg  block w-full p-2.5 bg-gray-900 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
                         placeholder="kependekan nama squad maksimal 6 karakter" />
                     @error('short_squad')
                         <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
@@ -76,7 +76,7 @@
                 <div class="md:mb-3 mb-5 w-full">
                     <label class="block mb-2 text-sm font-medium text-white capitalize">Logo team</label>
                     <input name="logo"
-                        class="block w-full md:w-sm text-sm border rounded-lg cursor-pointer  text-gray-400 focus:outline-none bg-gray-700 border-gray-600 placeholder-gray-400"
+                        class="block w-full md:w-sm text-sm border rounded-lg cursor-pointer  text-gray-400 focus:outline-none bg-gray-900 border-gray-600 placeholder-gray-400"
                         type="file">
                     @error('logo')
                         <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
@@ -85,7 +85,7 @@
                 <div class="md:mb-3 mb-5 w-full">
                     <label class="block mb-2 text-sm font-medium text-white capitalize">Bukti Pembayaran</label>
                     <input name="fee"
-                        class="block w-full md:w-sm text-sm border rounded-lg cursor-pointer  text-gray-400 focus:outline-none bg-gray-700 border-gray-600 placeholder-gray-400"
+                        class="block w-full md:w-sm text-sm border rounded-lg cursor-pointer  text-gray-400 focus:outline-none bg-gray-900 border-gray-600 placeholder-gray-400"
                         type="file">
                     @error('fee')
                         <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
@@ -108,7 +108,7 @@
                     <div class="flex flex-col md:flex-row gap-2">
                         <div class="w-full">
                             <input type="text" name="nickname1" value="{{ old('nickname1') }}"
-                                class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
+                                class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-900 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
                                 placeholder="Nickname player 1" />
                             @error('nickname1')
                                 <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
@@ -116,7 +116,7 @@
                         </div>
                         <div class="w-full">
                             <input type="number" name="id_nickname1" value="{{ old('id_nickname1') }}"
-                                class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
+                                class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-900 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
                                 placeholder="id player 1" />
                             @error('id_nickname1')
                                 <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
@@ -132,7 +132,7 @@
                     <div class="flex flex-col md:flex-row gap-2">
                         <div class="w-full">
                             <input type="text" name="nickname2" value="{{ old('nickname2') }}"
-                                class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
+                                class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-900 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
                                 placeholder="Nickname player 2" />
                             @error('nickname2')
                                 <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
@@ -140,7 +140,7 @@
                         </div>
                         <div class="w-full">
                             <input type="number" name="id_nickname2" value="{{ old('id_nickname2') }}"
-                                class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
+                                class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-900 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
                                 placeholder="id player 2" />
                             @error('id_nickname2')
                                 <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
@@ -155,7 +155,7 @@
                     <div class="flex flex-col md:flex-row gap-2">
                         <div class="w-full">
                             <input type="text" name="nickname3" value="{{ old('nickname3') }}"
-                                class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
+                                class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-900 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
                                 placeholder="Nickname player 3" />
                             @error('nickname3')
                                 <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
@@ -163,7 +163,7 @@
                         </div>
                         <div class="w-full">
                             <input type="number" name="id_nickname3" value="{{ old('id_nickname3') }}"
-                                class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
+                                class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-900 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
                                 placeholder="id player 3" />
                             @error('id_nickname3')
                                 <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
@@ -178,7 +178,7 @@
                     <div class="flex flex-col md:flex-row gap-2">
                         <div class="w-full">
                             <input type="text" name="nickname4" value="{{ old('nickname4') }}"
-                                class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
+                                class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-900 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
                                 placeholder="Nickname player 4" />
                             @error('nickname4')
                                 <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
@@ -186,7 +186,7 @@
                         </div>
                         <div class="w-full">
                             <input type="number" name="id_nickname4" value="{{ old('id_nickname4') }}"
-                                class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
+                                class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-900 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
                                 placeholder="id player 4" />
                             @error('id_nickname4')
                                 <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
@@ -201,7 +201,7 @@
                     <div class="flex flex-col md:flex-row gap-2">
                         <div class="w-full">
                             <input type="text" name="nickname5" value="{{ old('nickname5') }}"
-                                class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
+                                class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-900 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
                                 placeholder="Nickname player 5" />
                             @error('nickname5')
                                 <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
@@ -209,7 +209,7 @@
                         </div>
                         <div class="w-full">
                             <input type="number" name="id_nickname5" value="{{ old('id_nickname5') }}"
-                                class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
+                                class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-900 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
                                 placeholder="id player 5" />
                             @error('id_nickname5')
                                 <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
@@ -224,7 +224,7 @@
                     <div class="flex flex-col md:flex-row gap-2">
                         <div class="w-full">
                             <input type="text" name="nickname6" value="{{ old('nickname6') }}"
-                                class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
+                                class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-900 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
                                 placeholder="Nickname player 6" />
                             @error('nickname6')
                                 <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
@@ -232,7 +232,7 @@
                         </div>
                         <div class="w-full">
                             <input type="number" name="id_nickname6" value="{{ old('id_nickname6') }}"
-                                class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
+                                class=" border w-2xl  text-sm rounded-lg  block w-full p-2.5 bg-gray-900 border-gray-600 placeholder-gray-400 text-white focus:ring-red-500 focus:border-red-500 shadow-sm-light"
                                 placeholder="id player 6" />
                             @error('id_nickname6')
                                 <p class="mt-1 text-xs font-extrabold text-red-500 font-poppins"> {{ $message }}</p>
@@ -241,7 +241,7 @@
                     </div>
                     <div class="flex items-center my-4">
                         <input id="default-checkbox" type="checkbox" value="1" required
-                            class="w-4 h-4 text-red-600  rounded  focus:ring-red-600 ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600">
+                            class="w-4 h-4 text-red-600  rounded  focus:ring-red-600 ring-offset-gray-800 focus:ring-2 bg-gray-900 border-gray-600">
                         <label for="default-checkbox" class="ms-2 text-sm font-medium  text-gray-300">
                             saya setuju dengan kebijakan <a href="{{ route('privacy.policy') }}" target="_blank"
                                 class="text-red-600 underline">privacy policy</a>
@@ -250,7 +250,7 @@
                     </div>
                     <div class="flex items-center">
                         <input id="checked-checkbox" type="checkbox" value="1" required
-                            class="w-4 h-4 text-red-600  rounded  focus:ring-red-600 ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600">
+                            class="w-4 h-4 text-red-600  rounded  focus:ring-red-600 ring-offset-gray-800 focus:ring-2 bg-gray-900 border-gray-600">
                         <label for="checked-checkbox" class="ms-2 text-sm font-medium  text-gray-300">
                             Saya sudah membaca <a href="{{ route('peraturan') }}" target="_blank"
                                 class="text-red-600 underline">peraturan</a>
@@ -288,7 +288,7 @@
             class="w-full my-2 px-2 md:px-14 py-4 rounded-md  ">
             <h2 id="harga">
                 <button type="button"
-                    class="flex items-center justify-between w-full p-4 font-medium rtl:text-right  border border-b-0  rounded-t-xl focus:ring-2 focus:ring-gray-900  border-gray-700 text-white bg-gray-900 hover:bg-gray-700  gap-3"
+                    class="flex items-center justify-between w-full p-4 font-medium rtl:text-right  border border-b-0  rounded-t-xl focus:ring-2 focus:ring-gray-900  border-gray-700 text-white bg-gray-900 hover:bg-gray-900  gap-3"
                     data-accordion-target="#harga1" aria-expanded="false" aria-controls="harga1">
                     <span class="text-left">Berapa biaya pendaftaran turnamen kabaena cup season {{ $system->season }} ?
                     </span>
@@ -307,7 +307,7 @@
             </div>
             <h2 id="biaya">
                 <button type="button"
-                    class="flex items-center justify-between w-full p-4 font-medium rtl:text-right  border border-b-0  rounded-t-xl focus:ring-2 focus:ring-gray-900  border-gray-700 text-white bg-gray-900 hover:bg-gray-700  gap-3"
+                    class="flex items-center justify-between w-full p-4 font-medium rtl:text-right  border border-b-0  rounded-t-xl focus:ring-2 focus:ring-gray-900  border-gray-700 text-white bg-gray-900 hover:bg-gray-900  gap-3"
                     data-accordion-target="#biaya1" aria-expanded="false" aria-controls="biaya1">
                     <span class="text-left">Dimana saya harus mengirim biaya pendaftaran ? </span>
                     <x-uiw-down class="w-4" />
@@ -323,7 +323,7 @@
             </div>
             <h2 id="wa">
                 <button type="button"
-                    class="flex items-center justify-between w-full p-4 font-medium rtl:text-right  border border-b-0  rounded-t-xl focus:ring-2 focus:ring-gray-900  border-gray-700 text-white bg-gray-900 hover:bg-gray-700  gap-3"
+                    class="flex items-center justify-between w-full p-4 font-medium rtl:text-right  border border-b-0  rounded-t-xl focus:ring-2 focus:ring-gray-900  border-gray-700 text-white bg-gray-900 hover:bg-gray-900  gap-3"
                     data-accordion-target="#wa1" aria-expanded="false" aria-controls="wa1">
                     <span class="text-left">Bagaimana penginputan nomor whatsapp? </span>
                     <x-uiw-down class="w-4" />
@@ -341,7 +341,7 @@
             </div>
             <h2 id="short_squad">
                 <button type="button"
-                    class="flex items-center justify-between w-full p-4 font-medium rtl:text-right  border border-b-0  rounded-t-xl focus:ring-2 focus:ring-gray-900  border-gray-700 text-white bg-gray-900 hover:bg-gray-700  gap-3"
+                    class="flex items-center justify-between w-full p-4 font-medium rtl:text-right  border border-b-0  rounded-t-xl focus:ring-2 focus:ring-gray-900  border-gray-700 text-white bg-gray-900 hover:bg-gray-900  gap-3"
                     data-accordion-target="#short_squad1" aria-expanded="false" aria-controls="short_squad1">
                     <span class="text-left">Apa itu short squad? </span>
                     <x-uiw-down class="w-4" />
@@ -356,7 +356,7 @@
             </div>
             <h2 id="logo">
                 <button type="button"
-                    class="flex items-center justify-between w-full p-4 font-medium rtl:text-right  border border-b-0  rounded-t-xl focus:ring-2 focus:ring-gray-900  border-gray-700 text-white bg-gray-900 hover:bg-gray-700  gap-3"
+                    class="flex items-center justify-between w-full p-4 font-medium rtl:text-right  border border-b-0  rounded-t-xl focus:ring-2 focus:ring-gray-900  border-gray-700 text-white bg-gray-900 hover:bg-gray-900  gap-3"
                     data-accordion-target="#logo1" aria-expanded="false" aria-controls="logo1">
                     <span class="text-left">Apakah saya bisa mendaftar tanpa logo squad? </span>
                     <x-uiw-down class="w-4" />
@@ -373,7 +373,7 @@
             </div>
             <h2 id="file">
                 <button type="button"
-                    class="flex items-center justify-between w-full p-4 font-medium rtl:text-right  border border-b-0  rounded-t-xl focus:ring-2 focus:ring-gray-900  border-gray-700 text-white bg-gray-900 hover:bg-gray-700  gap-3"
+                    class="flex items-center justify-between w-full p-4 font-medium rtl:text-right  border border-b-0  rounded-t-xl focus:ring-2 focus:ring-gray-900  border-gray-700 text-white bg-gray-900 hover:bg-gray-900  gap-3"
                     data-accordion-target="#file1" aria-expanded="false" aria-controls="file1">
                     <span class="text-left">Berapa ukuran maksimal mengupload file logo dan bukti biaya pendaftaran?
                     </span>
@@ -389,7 +389,7 @@
             </div>
             <h2 id="player">
                 <button type="button"
-                    class="flex items-center justify-between w-full p-4 font-medium rtl:text-right  border border-b-0  rounded-t-xl focus:ring-2 focus:ring-gray-900  border-gray-700 text-white bg-gray-900 hover:bg-gray-700  gap-3"
+                    class="flex items-center justify-between w-full p-4 font-medium rtl:text-right  border border-b-0  rounded-t-xl focus:ring-2 focus:ring-gray-900  border-gray-700 text-white bg-gray-900 hover:bg-gray-900  gap-3"
                     data-accordion-target="#player1" aria-expanded="false" aria-controls="player1">
                     <span class="text-left">Apakah saya bisa mendaftar tanpa player ke-6 atau cadangan? </span>
                     <x-uiw-down class="w-4" />
@@ -404,7 +404,7 @@
             </div>
             <h2 id="player1">
                 <button type="button"
-                    class="flex items-center justify-between w-full p-4 font-medium rtl:text-right  border border-b-0  rounded-t-xl focus:ring-2 focus:ring-gray-900  border-gray-700 text-white bg-gray-900 hover:bg-gray-700  gap-3"
+                    class="flex items-center justify-between w-full p-4 font-medium rtl:text-right  border border-b-0  rounded-t-xl focus:ring-2 focus:ring-gray-900  border-gray-700 text-white bg-gray-900 hover:bg-gray-900  gap-3"
                     data-accordion-target="#player11" aria-expanded="false" aria-controls="player11">
                     <span class="text-left">Apakah saya bisa mendaftar dengan player yang sama di squad yang sama? </span>
                     <x-uiw-down class="w-4" />
@@ -419,7 +419,7 @@
             </div>
             <h2 id="menunggu">
                 <button type="button"
-                    class="flex items-center justify-between w-full p-4 font-medium rtl:text-right  border border-b-0  rounded-t-xl focus:ring-2 focus:ring-gray-900  border-gray-700 text-white bg-gray-900 hover:bg-gray-700  gap-3"
+                    class="flex items-center justify-between w-full p-4 font-medium rtl:text-right  border border-b-0  rounded-t-xl focus:ring-2 focus:ring-gray-900  border-gray-700 text-white bg-gray-900 hover:bg-gray-900  gap-3"
                     data-accordion-target="#menunggu1" aria-expanded="false" aria-controls="menunggu1">
                     <span class="text-left">Apa yang akan saya lakukan setelah mendaftar? </span>
                     <x-uiw-down class="w-4" />
@@ -439,4 +439,26 @@
         </div>
 
     </div>
+
+    <script>
+        const bntNext = document.getElementById("btnNext");
+const bntPrev = document.getElementById("btnPrev");
+const bntSubmit = document.getElementById("btnSubmit");
+const stepOne = document.getElementById("step-one-register");
+const stepTwo = document.getElementById("step-two-register");
+
+bntPrev.addEventListener("click", function () {
+    bntNext.classList.replace("hidden", "block");
+    stepOne.classList.replace("hidden", "block");
+    bntSubmit.classList.replace("block", "hidden");
+    stepTwo.classList.replace("block", "hidden");
+});
+
+bntNext.addEventListener("click", function () {
+    bntSubmit.classList.replace("hidden", "block");
+    stepTwo.classList.replace("hidden", "block");
+    bntNext.classList.replace("block", "hidden");
+    stepOne.classList.replace("block", "hidden");
+});
+    </script>
 @endsection

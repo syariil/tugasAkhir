@@ -87,8 +87,6 @@
 
                     </a>
                 </li>
-            @endif
-            @if (auth()->user()->role == 'admin')
                 <li>
                     <a href="{{ route('standing.index') }}"
                         class="flex items-center p-2  rounded-lg text-white  hover:bg-red-600 {{ Request::routeIs('standing.*') ? 'bg-red-600' : '' }}">
@@ -97,6 +95,8 @@
 
                     </a>
                 </li>
+            @endif
+            @if (auth()->user()->role == 'admin')
                 <li>
                     <a href="{{ route('grup.index') }}"
                         class="flex items-center p-2  rounded-lg text-white  hover:bg-red-600 {{ Request::routeIs('grup.*') ? 'bg-red-600' : '' }}">

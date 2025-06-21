@@ -29,10 +29,28 @@
                         <h2 class="text-lg font-semibold">Lokasi</h2>
                         <p class="text-gray-400">Kabaena Timur, Bombana</p>
                     </div>
-                </div>
-
+                    <div class="p-6 bg-gray-800 rounded-lg">
+                        <h2 class="text-lg font-semibold">Email</h2>
+                        <p class="text-sky-500 underline">
+                            <a href="mailto:info@kabaenacup.com">info@kabaenacup.com</a>
+                        </p>
+                    </div>
+                    <div class="p-6 bg-gray-800 rounded-lg">
+                        <h2 class="text-lg font-semibold">Sosial media</h2>
+                        <p class="text-gray-400 flex flex-row gap-4">
+                            <a href="https://www.youtube.com/@kabaenacupmlbb888" target="_blank" class="flex items-center flex-row gap-2 text-red-500">
+                                <x-uni-youtube-o class="h-6 w-6" /> Youtube
+                            </a>
+                            <a href="https://www.instagram.com/kabaena_cup" target="_blank" class="flex items-center flex-row gap-2 text-sky-600">
+                                <x-uni-instagram-o class="h-6 w-6" /> Instagram
+                            </a>
+                            <a href="https://discord.gg/kabaenacup" target="_blank" class="flex items-center flex-row gap-2 text-blue-600">
+                                <x-uni-discord-o class="h-6 w-6 " /> Discord
+                            </a>
+                        </p>
+                    </div>
                 <!-- Peserta -->
-                <div class="p-6 bg-gray-800 rounded-lg mt-4">
+                {{-- <div class="p-6 bg-gray-800 rounded-lg mt-4">
                     <h2 class="text-2xl font-semibold mb-4">Pendiri</h2>
                     <div class="flex justify-around md:flex-row flex-col items-center md:gap-4 gap-2">
                         <!-- Peserta Item -->
@@ -58,7 +76,7 @@
                             <h3 class="font-medium">M. Syahril</h3>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>

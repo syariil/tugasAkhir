@@ -12,6 +12,9 @@ class StandingController extends Controller
 {
     public function index(Request $request)
     {
+        // ambil season dari sistem
+        $season = DB::table('systems')->select('season')->first();
+        $season = $season->season;
 
         // Ambil filter season dari request
         $selectedSeason = $request->input('season');
@@ -34,50 +37,19 @@ class StandingController extends Controller
             ->select('id', 'squad')
             ->where('season', $selectedSeason)
             ->get();
+        
+        // dd($tim);
+        // dd($grups);
+        // collect standing
+                $standing = DB::select('select standings.id, standings.id_grup, standings.id_tim , standings.game, standings.win, standings.lose, standings.winrate, standings.poin, tims.short_squad,grups.grup from standings inner join tims on tims.id = standings.id_tim inner join grups on grups.id = standings.id_grup order by standings.poin desc');
+        // dd($standing);
 
-        // Query standings dengan join ke tabel grups dan tims
-        $standings = DB::table('standings')
-            ->select('standings.*', 'tims.squad', 'tims.season', 'grups.grup', 'grups.id as grup_id')
-            ->join('tims', 'tims.id', '=', 'standings.id_tim')
-            ->join('grups', 'grups.id', '=', 'standings.id_grup')
-            ->where('tims.season', $selectedSeason)
-            ->get();
+                $grup = DB::select('select id, grup from grups where season = ?', [$season]);
 
-        $arrayGrup = [];
-        $arrayTim = [];
-
-        // Iterasi setiap grup
-        foreach ($grups as $grup) {
-            $grupId = $grup->id;
-
-            // Tambahkan nama grup ke array grup
-            $arrayGrup[] = [
-                'id_grup' => $grup->id,
-                'grup' => $grup->grup,
-                'season' => $grup->season,
-            ];
-
-            // Cari tim-tim dalam grup ini berdasarkan standings
-            $timInGroup = array_filter($standings->toArray(), function ($standing) use ($grupId) {
-                return $standing->id_grup == $grupId;
-            });
-
-            // Ambil daftar nama tim dari standings
-            $timNames = array_map(function ($standing) {
-                return [
-                    'id_tim' => $standing->id_tim,
-                    'squad' => $standing->squad,
-                    'id_grup' => $standing->id_grup,
-                ];
-            }, $timInGroup);
-
-            // Tambahkan daftar tim ke array tim
-            $arrayTim[] = $timNames;
-        }
 
         return view('backend.standing.index', [
-            'arrayTim' => $arrayTim,
-            'grup' => $arrayGrup,
+            'standing' => $standing,
+            'grups' => $grups,
             'tims' => $tims,
             'seasons' => $seasons,
             'selectedSeason' => $selectedSeason,
@@ -129,7 +101,7 @@ class StandingController extends Controller
             'poin' => 'numeric',
         ]);
         $id->update($input);
-        return redirect()->route('standing.edit', $id->id_grup)->with('success', 'Standing update successfully!');
+        return redirect()->route('standing.index', $id->id_grup)->with('success', 'Standing update successfully!');
     }
 
     public function delete(Standings $id)
@@ -137,6 +109,6 @@ class StandingController extends Controller
         $tim = DB::select('select squad from tims where id = ?', [$id->id_tim]);
         $id->delete();
         // dd($id->id_grup);
-        return redirect()->route('standing.edit', $id->id_grup)->with('success', 'tim ' . $tim[0]->squad . ' delete successfully from standings!');
+        return redirect()->route('standing.index', $id->id_grup)->with('success', 'tim ' . $tim[0]->squad . ' delete successfully from standings!');
     }
 }

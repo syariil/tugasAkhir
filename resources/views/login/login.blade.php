@@ -11,6 +11,14 @@
 </head>
 
 <body class="bg-gray-900">
+     <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 ">
+        <div class="flex-col gap-4 w-full flex items-center justify-center">
+            <div class="w-28 h-28 border-8 text-red-600 text-4xl animate-spin border-gray-300 flex items-center justify-center border-t-red-600 rounded-full">
+                <img src="{{ asset('storage/image/logo/logo.png') }}" class="w-12 h-12 rounded-full animate-ping" alt="Kabaena Logo" />
+            </div>
+        </div>
+    </div>
     <div class="w-[calc(100%-256px+256px)] h-screen items-end flex justify-center bg-[url('/storage/image/logo.png')] bg-no-repeat bg-fixed bg-center bg-opacity-5 opacity-10 bg-cover fixed z-[-10]"></div>
     <section>
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen h-auto ">

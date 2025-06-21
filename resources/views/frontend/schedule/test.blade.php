@@ -4,94 +4,11 @@
 
     <div class="w-full mt-6 md:mt-14">
         {{-- heading schedule --}}
-        <div class="mb-4 border-b  border-gray-700">
+        <div class="mb-4 border-b border-gray-700">
             <x-heading name="schedule" margin="0" />
         </div>
-        {{-- tab schedule --}}
-        <div x-data="scheduleGet()" x-cloak>
-            <!-- Tab Headers -->
-            <div class="mb-4 border-b border-gray-900">
-                <ul class="flex flex-wrap -mb-px text-sm font-medium text-center justify-center text-white">
-                    @for ($i = $minDay; $i <= $maxDay; $i++)
-                        <li class="me-2" role="presentation">
-                            <button @click="activeTab = 'day{{ $i }}'"
-                                :class="{
-                                    'text-red-600 border-red-500': activeTab === 'day{{ $i }}',
-                                    'hover:text-red-700 text-white': activeTab !== 'day{{ $i }}'
-                                }"
-                                class="inline-block p-4 border-b-2 rounded-t-lg" type="button">
-                                day {{ $i }}
-                            </button>
-                        </li>
-                    @endfor
-                </ul>
-            </div>
 
-            <!-- Loading Indicator -->
-            <div x-show="loading" class="text-white text-center py-2">
-                <div class="flex-col gap-4 w-full flex items-center justify-center">
-                    <div
-                        class="w-28 h-28 border-8 text-red-600 text-4xl animate-spin border-gray-300 flex items-center justify-center border-t-red-600 rounded-full">
-                        <img src="{{ asset('storage/image/logo/logo.png') }}" class="w-12 h-12 rounded-full animate-ping"
-                            alt="Kabaena Logo" />
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tab Contents -->
-
-            <div x-show="schedules.length === 0 && !loading" class="text-white text-center py-4">
-                Tidak ada jadwal pertandingan untuk hari ini.
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 items-center" x-show="!loading && tabShow"
-                x-transition>
-                <template x-for="item in schedules" :key="item.id">
-                    <div
-                        class="flex flex-col border-gray-700 bg-gray-900 shadow-xl shadow-gray-800/100 rounded-xl border-2 py-2 md:py-4">
-                        <div class="flex flex-row justify-between items-center py-2 px-4 gap-[4px]">
-                            <!-- Team 1 -->
-                            <div class="flex flex-col justify-center items-center max-w-[240px]">
-                                <img :src="safeImagePath(item.logoA)" :alt="'logo ' + item.timA"
-                                    class="w-[64px] md:w-max-[90px] max-h-[80px] rounded-full object-contain mb-1">
-                                <h2 class="font-kodeMono font-bold text-[16px] md:text-[18px] text-center uppercase text-white"
-                                    x-text="item.timA"></h2>
-                            </div>
-
-                            <!-- Match Info -->
-                            <div class="flex flex-row justify-around gap-2 items-center">
-                                <h1 class="font-kodeMono font-extrabold text-red-600 text-5xl" x-text="item.scoreA"></h1>
-                                <div class="flex flex-col justify-center items-center p-[4px]">
-                                    <h1 class="text-white font-bold text-[16px] truncate text-center"
-                                        x-text="formatTime(item.time)"></h1>
-                                    <h1 class="text-white font-bold text-[14px] truncate text-center"
-                                        x-text="formatDate(item.date)"></h1>
-                                    <h1 class="text-red-500  font-bold text-[18px] font-kodeMono uppercase text-center"
-                                        x-text="item.babak === 'regular' ? 'Grup phase' :  'knockout phase'">
-                                    </h1>
-                                </div>
-                                <h1 class="font-kodeMono font-extrabold text-red-600 text-5xl" x-text="item.scoreB"></h1>
-                            </div>
-
-                            <!-- Team 2 -->
-                            <div class="flex flex-col justify-center items-center max-w-[240px]">
-                                <img :src="safeImagePath(item.logoB)" :alt="'logo ' + item.timB"
-                                    class="w-[64px] md:w-max-[90px] max-h-[80px] rounded-full object-contain mb-1">
-                                <h2 class="font-kodeMono font-bold text-[16px] md:text-[18px] text-center uppercase text-white"
-                                    x-text="item.timB"></h2>
-                            </div>
-                        </div>
-                    </div>
-                </template>
-            </div>
-            <div class="flex justify-start px-4">
-                <h3 class="font-poppins text-white text-[12px] md:text-sm italic font-bold">
-                    <span class="text-red-600">*</span>Semua waktu dalam WITA (GMT+8)
-                </h3>
-            </div>
-            <!-- Tambahkan ini untuk menangani kasus tidak ada schedule -->
-        </div>
-
-        {{-- tab standing --}}
+        {{-- Schedule Section --}}
         <div x-data="standingData" x-cloak>
             <!-- Tab Headers -->
             <div class="mb-4 border-b border-gray-900">
@@ -179,11 +96,51 @@
                 </template>
             </div>
         </div>
+
+        <script>
+            document.addEventListener('alpine:init', () => {
+                Alpine.data('standingData', () => ({
+                    activeTab: {{ $grup->first()->id ?? 0 }}, // Default to first grup id
+                    loading: true,
+                    standings: [],
+                    tabShow: false,
+
+                    init() {
+                        // Load initial data
+                        this.fetchStandings();
+                    },
+
+                    changeTab(grupId) {
+                        this.activeTab = grupId;
+                        this.tabShow = false;
+                        this.loading = true;
+                        this.standings = [];
+                        this.fetchStandings();
+                    },
+
+                    fetchStandings() {
+                        fetch(`{{ url('/api/standings') }}/${this.activeTab}`)
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('Network response was not ok');
+                                }
+                                return response.json();
+                            })
+                            .then(data => {
+                                this.standings = data;
+                                this.loading = false;
+                                this.tabShow = true;
+                            })
+                            .catch(error => {
+                                console.error('Error fetching standings:', error);
+                                this.loading = false;
+                                this.tabShow = true;
+                                this.standings = [];
+                            });
+                    }
+
+                }));
+            });
+        </script>
     </div>
-
-
-
-
-
-
 @endsection
