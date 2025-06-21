@@ -92,9 +92,41 @@
         </div>
 
         {{-- tab standing --}}
-        <div x-data="standingData" x-cloak>
+        <div class="mb-4 border-b  border-gray-700">
+            <x-heading name="standing" margin="0" />
+        </div>
+        {{-- Standing Section --}}
+        <div x-data="standingGet({{ $grup->first()->id }})" x-cloak>
             <!-- Tab Headers -->
             <div class="mb-4 border-b border-gray-900">
+                <ul class="flex flex-wrap -mb-px text-sm font-medium text-center justify-start text-white">
+                    <li class="me-2" role="presentation">
+                        <button @click="tabBabak('regular')"
+                            :class="{
+                                'text-red-600 border-red-500': activeBabak === 'regular',
+                                'hover:text-red-700 text-white': activeBabak !== 'regular'
+                            }"
+                            class="inline-block p-4 border-b-2 rounded-t-lg" type="button">
+                            Grup
+                        </button>
+                    </li>
+                    {{-- if babak equal playoff --}}
+                    @if ($babak === 'playoff')
+                        <li class="me-2" role="presentation">
+                            <button @click="tabBabak('playoff')"
+                                :class="{
+                                    'text-red-600 border-red-500': activeBabak === 'playoff',
+                                    'hover:text-red-700 text-white': activeBabak !== 'playoff'
+                                }"
+                                class="inline-block p-4 border-b-2 rounded-t-lg" type="button">
+                                playoff
+                            </button>
+                        </li>
+                    @endif
+                </ul>
+            </div>
+            {{-- grup button --}}
+            <div x-show="!loading && tabShow && activeBabak === 'regular'" class="mb-4 border-b border-gray-900">
                 <ul class="flex flex-wrap -mb-px text-sm font-medium text-center justify-center text-white">
                     @foreach ($grup as $item)
                         <li class="me-2" role="presentation">
@@ -122,8 +154,8 @@
                 </div>
             </div>
 
-            <!-- Content -->
-            <div x-show="!loading && tabShow" x-transition>
+            <!-- Content grup -->
+            <div x-show="!loading && tabShow && activeBabak === 'regular'" x-transition>
                 <template x-if="standings.length > 0">
                     <div class="w-full bg-gray-900 rounded-lg shadow-md p-4">
                         <div class="overflow-x-auto w-full">
@@ -178,6 +210,15 @@
                     </div>
                 </template>
             </div>
+
+            {{-- if babak equal playoff --}}
+            @if ($babak === 'playoff')
+                {{-- contect playoff --}}
+                <div x-show="!loading && tabShow && activeBabak === 'playoff'" x-transition>
+                    <img src="{{ asset('storage/image/banner/' . $playoff_banner) }}" alt="banner playoff"
+                        class="w-full md:w-[720px] h-auto rounded-lg shadow-md mb-4 flex justify-center items-center mx-auto">
+                </div>
+            @endif
         </div>
     </div>
 

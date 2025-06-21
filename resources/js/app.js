@@ -13,119 +13,127 @@ window.Alpine = Alpine;
 
 // Schedule Component
 document.addEventListener('alpine:init', () => {
-            Alpine.data('scheduleGet', () => ({
-                activeTab: 'day1',
-                loading: true,
-                schedules: [],
-                numberTab: 1,
-                tabShow: false,
+        Alpine.data('scheduleGet', () => ({
+            activeTab: 'day1',
+            loading: true,
+            schedules: [],
+            numberTab: 1,
+            tabShow: false,
 
-                init() {
-                    this.fetchSchedules();
-                    // this.tabShow = this.activeTab === this.numberTab;
-                    // Watch for tab changes
-                    this.$watch('activeTab', (newTab) => {
-                        this.schedules = [];
-                        this.loading = true;
-                        this.fetchSchedules();
-                    });
-                },
-
-                fetchSchedules() {
+            init() {
+                this.fetchSchedules();
+                // this.tabShow = this.activeTab === this.numberTab;
+                // Watch for tab changes
+                this.$watch('activeTab', (newTab) => {
+                    this.schedules = [];
                     this.loading = true;
-                    // get number from active tab
-                    const dayNumber = this.activeTab.replace('day', '');
-                    this.tabShow = this.activeTab === `day${dayNumber}`;
+                    this.fetchSchedules();
+                });
+            },
 
-                    this.numberTab = dayNumber;
-                    fetch(`${appUrl}/api/schedules/${dayNumber}`)
-                        .then(response => response.json())
-                        .then(data => {
-                            this.schedules = data;
-                            this.loading = false;
-                        })
-                        .catch(error => {
-                            const path = "{{ env('APP_URL')}}";
-                            console.log(path);
-                            console.error('Error fetching schedules:', error);
-                            this.loading = false;
-                        });
-                },
+            fetchSchedules() {
+                this.loading = true;
+                // get number from active tab
+                const dayNumber = this.activeTab.replace('day', '');
+                this.tabShow = this.activeTab === `day${dayNumber}`;
 
-
-                filteredSchedules(day) {
-                    return this.schedules.filter(item => item.day === day);
-                },
-
-                formatTime(time) {
-                    const [hours, minutes] = time.split(`:`);
-
-                    const date = new Date();
-                    date.setHours(parseInt(hours));
-                    date.setMinutes(parseInt(minutes));
-                    date.setSeconds(0);
-
-                    return date.toLocaleTimeString("id-ID", {
-                        hour: '2-digit',
-                        minute: '2-digit'
+                this.numberTab = dayNumber;
+                fetch(`${appUrl}/api/schedules/${dayNumber}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        this.schedules = data;
+                        this.loading = false;
+                    })
+                    .catch(error => {
+                        const path = "{{ env('APP_URL')}}";
+                        console.log(path);
+                        console.error('Error fetching schedules:', error);
+                        this.loading = false;
                     });
-                },
+            },
 
-                formatDate(date) {
-                    const dte = new Date(date);
-                    return new Intl.DateTimeFormat('id-ID', {
-                        weekday: 'long',
-                        day: 'numeric',
-                        month: 'long'
-                    }).format(dte);
-                },
 
-                safeImagePath(path) {
-                    return path ? `${appUrl}/storage/image/logo/${path.replace(/^\/+/, '')}` : `${appUrl}/storage/image/logo/logo.png`;           
-                },
-            }));
-            Alpine.data('standingData', () => ({
-                    activeTab: 3 ?? 0 , // Default to first grup id
-                    loading: true,
-                    standings: [],
-                    tabShow: false,
+            filteredSchedules(day) {
+                return this.schedules.filter(item => item.day === day);
+            },
 
-                    init() {
-                        // Load initial data
-                        this.fetchStandings();
-                    },
+            formatTime(time) {
+                const [hours, minutes] = time.split(`:`);
 
-                    changeTab(grupId) {
-                        this.activeTab = grupId;
-                        this.tabShow = false;
-                        this.loading = true;
+                const date = new Date();
+                date.setHours(parseInt(hours));
+                date.setMinutes(parseInt(minutes));
+                date.setSeconds(0);
+
+                return date.toLocaleTimeString("id-ID", {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            },
+
+            formatDate(date) {
+                const dte = new Date(date);
+                return new Intl.DateTimeFormat('id-ID', {
+                    weekday: 'long',
+                    day: 'numeric',
+                    month: 'long'
+                }).format(dte);
+            },
+
+            safeImagePath(path) {
+                return path ? `${appUrl}/storage/image/logo/${path.replace(/^\/+/, '')}` : `${appUrl}/storage/image/logo/logo.png`;           
+            },
+        }));
+
+        Alpine.data('standingGet', (initialGrupId) => ({
+            activeTab: initialGrupId, // Initialize with first group ID
+            activeBabak: 'regular',
+            loading: true,
+            standings: [],
+            tabShow: false,
+
+            init() {
+                this.fetchStandings();
+                
+                // Watch for tab changes
+                this.$watch('activeTab', (newTab) => {
+                    this.standings = [];
+                    this.loading = true;
+                    this.fetchStandings();
+                });
+            },
+
+            changeTab(grupId) {
+                this.activeTab = grupId;
+            },
+
+            tabBabak(babak) {
+                this.activeBabak = babak;
+                // this.loading = true;
+            },
+
+            fetchStandings() {
+                fetch(`${appUrl}/api/standings/${this.activeTab}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        this.standings = data;
+                        this.loading = false;
+                        this.tabShow = true;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching standings:', error);
+                        this.loading = false;
+                        this.tabShow = true;
                         this.standings = [];
-                        this.fetchStandings();
-                    },
-
-                    fetchStandings() {
-                        fetch(`${appUrl}/api/schedules/${this.activeTab}`)
-                            .then(response => {
-                                if (!response.ok) {
-                                    throw new Error('Network response was not ok');
-                                }
-                                return response.json();
-                            })
-                            .then(data => {
-                                this.standings = data;
-                                this.loading = false;
-                                this.tabShow = true;
-                            })
-                            .catch(error => {
-                                console.error('Error fetching standings:', error);
-                                this.loading = false;
-                                this.tabShow = true;
-                                this.standings = [];
-                            });
-                    }
-
-                }));
-        });
+                    });
+            },
+        }));
+    });
 
 // Start Alpine setelah semua komponen terdaftar
 Alpine.start();
