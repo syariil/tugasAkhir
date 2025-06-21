@@ -55,7 +55,9 @@ Route::get('/test/{id}/view', [TestController::class, 'view'])->name('test.view'
 Route::get('/test/{id}/edit', [TestController::class, 'edit'])->name('test.edit');
 
 
-
+// api
+Route::get("/api/schedules/{day}", [ScheduleController::class, "getSchedules"])->name("schedule.api");
+Route::get("/api/standings/{id_grup}", [ScheduleController::class, "getStandings"])->name("standing.api");
 
 Route::middleware(['auth'])->group(function () {
     // get schedule api
@@ -75,9 +77,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::middleware('role:admin')->group(function () {
-        // api
-        Route::get("/api/schedules/{day}", [ScheduleController::class, "getSchedules"])->name("schedule.api");
-        Route::get("/api/standings/{id_grup}", [ScheduleController::class, "getStandings"])->name("standing.api");
+
         // tim
         Route::get("/admin/tim", [TimController::class, "index"])->name("tim.index");
         Route::delete("/admin/tim/{id}", [TimController::class, "delete"])->name("tim.delete");

@@ -18,18 +18,17 @@ class ScheduleController extends Controller
         $bannerPlayoff = $bannerPlayoff[0]->playoff_banner ?? null;
         $season = $season[0]->season;
 
-        // get max day in standings
-        $maxDay = DB::table('schedules')
-            ->max('day');
-        // get min day in standings
-        $minDay = DB::table('schedules')
-            ->min('day');
+        $result = DB::table('schedules')
+            ->selectRaw('MAX(day) as max_day')
+            ->first();
+
+        $maxDay = $result->max_day;
 
         // $grup = DB::select('select id, grup from grups where season = ?', [$season]);
         $grup = collect(DB::select('select id, grup from grups where season = ?', [$season]));
         // dd($grup->first()->id);
 
-        return view("frontend.schedule.regular", ['minDay' => $minDay, 'maxDay' => $maxDay, 'grup' => $grup, 'playoff_banner' => $bannerPlayoff, 'babak' => $babak]);
+        return view("frontend.schedule.regular", ['maxDay' => $maxDay, 'grup' => $grup, 'playoff_banner' => $bannerPlayoff, 'babak' => $babak]);
 
         // $schedulePlayoff = DB::select("select schedules.*, timA.short_squad as timA, timB.short_squad as timB, timA.logo as logoA, timB.logo as logoB from schedules inner join tims as timA on timA.id = schedules.id_timA inner join tims as timB on timB.id = schedules.id_timB where schedules.babak = ? and (timA.season = ? or timB.season = ?)", [$babak, $season, $season]);
 

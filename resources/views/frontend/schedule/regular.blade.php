@@ -12,7 +12,7 @@
             <!-- Tab Headers -->
             <div class="mb-4 border-b border-gray-900">
                 <ul class="flex flex-wrap -mb-px text-sm font-medium text-center justify-center text-white">
-                    @for ($i = $minDay; $i <= $maxDay; $i++)
+                    @for ($i = 1; $i <= $maxDay; $i++)
                         <li class="me-2" role="presentation">
                             <button @click="activeTab = 'day{{ $i }}'"
                                 :class="{
@@ -96,7 +96,7 @@
             <x-heading name="standing" margin="0" />
         </div>
         {{-- Standing Section --}}
-        <div x-data="standingGet({{ $grup->first()->id }})" x-cloak>
+        <div x-data="standingGet({{ $grup->first()->id ?? 1 }})" x-cloak>
             <!-- Tab Headers -->
             <div class="mb-4 border-b border-gray-900">
                 <ul class="flex flex-wrap -mb-px text-sm font-medium text-center justify-start text-white">
@@ -126,7 +126,7 @@
                 </ul>
             </div>
             {{-- grup button --}}
-            <div x-show="!loading && tabShow && activeBabak === 'regular'" class="mb-4 border-b border-gray-900">
+            <div x-show=" tabShow && activeBabak === 'regular'" class="mb-4 border-b border-gray-900">
                 <ul class="flex flex-wrap -mb-px text-sm font-medium text-center justify-center text-white">
                     @foreach ($grup as $item)
                         <li class="me-2" role="presentation">
