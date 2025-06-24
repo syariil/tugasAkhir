@@ -36,7 +36,7 @@ class RoleMiddleware
             switch ($user->role) {
                 case "peserta":
                     $routeAllowed = in_array($route, $routeName);
-                    if ($route === "dashboard" || $route === "standing.index" || ($routeAllowed && $user->tim_id === $id->id)) {
+                    if ($route === "dashboard" || $route === "standing.index" || ($routeAllowed && $user->tim_id == $id->id)) {
                         if (!$registration && $route === "tim.edit") {
                             abort(403, 'Anda tidak memiliki akses ke halaman ini.');
                         }
