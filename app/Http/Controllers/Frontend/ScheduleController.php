@@ -22,24 +22,11 @@ class ScheduleController extends Controller
             ->selectRaw('MAX(day) as max_day')
             ->first();
 
-        $maxDay = $result->max_day;
+        $maxDay = $result->max_day ?? 1;
 
-        // $grup = DB::select('select id, grup from grups where season = ?', [$season]);
         $grup = collect(DB::select('select id, grup from grups where season = ?', [$season]));
-        // dd($grup->first()->id);
 
         return view("frontend.schedule.regular", ['maxDay' => $maxDay, 'grup' => $grup, 'playoff_banner' => $bannerPlayoff, 'babak' => $babak]);
-
-        // $schedulePlayoff = DB::select("select schedules.*, timA.short_squad as timA, timB.short_squad as timB, timA.logo as logoA, timB.logo as logoB from schedules inner join tims as timA on timA.id = schedules.id_timA inner join tims as timB on timB.id = schedules.id_timB where schedules.babak = ? and (timA.season = ? or timB.season = ?)", [$babak, $season, $season]);
-
-        // // day collection
-        // $highestDay = DB::selectOne("select MAX(schedules.day) as highest_day from schedules inner join tims as timA on timA.id = schedules.id_timA inner join tims as timB on timB.id = schedules.id_timB where schedules.babak = ? and (timA.season = ? or timB.season = ?)", [$babak, $season, $season]);
-
-        // // Ambil nilai tertinggi
-        // $day = $highestDay->highest_day ?? 1;
-        // $bannerPlayoff = DB::select('select playoff_banner from systems limit 1');
-        // return view('frontend.schedule.playoff', ['schedules' => $schedulePlayoff, 'day' => $day, 'playoff_banner' => $bannerPlayoff]);
-
     }
 
     public function getSchedules($day = null)

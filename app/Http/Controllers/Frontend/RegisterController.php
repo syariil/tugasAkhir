@@ -28,7 +28,7 @@ class RegisterController extends Controller
         $request->validate(
             [
                 'leader' => 'required|string|max:255',
-                'no_whatsapp' => ["required", "digits_between:11,13", "regex:/^(62|0)8[1-9][0-9]{6,9}$/"],
+                'no_whatsapp' => ["required", "string", "min:10", "max:13", "regex:/^(62|0)8[1-9][0-9]{6,9}$/"],
                 'squad' => 'required|string|max:255',
                 'short_squad' => 'required|string|max:6',
                 'logo' => 'nullable|image|mimes:jpg,jpeg,png|max:5120',
@@ -54,6 +54,7 @@ class RegisterController extends Controller
                 'logo.max' => ':attribute tidak boleh lebih dari 5MB.',
                 'fee.max' => ':attribute tidak boleh lebih dari 5MB.',
                 'different' => ':attribute harus berbeda dari player lain .',
+                'min' => ':attribute tidak boleh kurang dari :min karakter.',
                 'max' => ':attribute tidak boleh lebih dari :max karakter.',
                 'string' => ':attribute harus berupa text',
                 'integer' => ':attribute harus berupa angka',
@@ -81,7 +82,7 @@ class RegisterController extends Controller
 
         $input = $request->except('_token');
         $input["no_whatsapp"] = "0" . preg_replace("/.*?(8.*)/", "$1", $input["no_whatsapp"]);
-        $input["no_whatsapp"] = (int)$input["no_whatsapp"];
+        // $input["no_whatsapp"] = (int)$input["no_whatsapp"];
         // dd($input["no_whatsapp"]);
 
         if ($request->file('logo')) {
