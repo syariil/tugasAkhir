@@ -22,7 +22,9 @@ class ScheduleController extends Controller
             ->join('tims', 'tims.id', '=', 'schedules.id_timA')
             ->where('tims.season', '=', $season)
             ->max('schedules.day');
-        $maxDay = $result->max_day ?? 1;
+
+        $maxDay = $result ?? 1;
+
 
         $grup = collect(DB::select('select id, grup from grups where season = ?', [$season]));
 
