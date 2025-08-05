@@ -19,9 +19,9 @@ class ScheduleController extends Controller
         $season = $season[0]->season;
 
         $result = DB::table('schedules')
-            ->selectRaw('MAX(day) as max_day')
-            ->first();
-
+            ->join('tims', 'tims.id', '=', 'schedules.id_timA')
+            ->where('tims.season', '=', $season)
+            ->max('schedules.day');
         $maxDay = $result->max_day ?? 1;
 
         $grup = collect(DB::select('select id, grup from grups where season = ?', [$season]));

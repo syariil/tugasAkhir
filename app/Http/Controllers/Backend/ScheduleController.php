@@ -33,6 +33,10 @@ class ScheduleController extends Controller
             ->join('tims as timA', 'timA.id', '=', 'schedules.id_timA')
             ->join('tims as timB', 'timB.id', '=', 'schedules.id_timB')
             ->where('schedules.babak', '=', $babak) // Filter berdasarkan babak
+            ->where(function ($query) use ($season) {
+                $query->where('timA.season', $season)
+                    ->orWhere('timB.season', $season); // Filter berdasarkan season
+            })
             ->orderBy('schedules.id', 'desc');
 
         // Terapkan filter season
@@ -50,7 +54,7 @@ class ScheduleController extends Controller
 
         // Pagination
         $schedule = $query->paginate(15);
-        // dd($schedule->items()[0]);
+        // dd($schedule);
 
         // Ambil data tim untuk dropdown (season terkait)
         $squads = DB::table('tims')
