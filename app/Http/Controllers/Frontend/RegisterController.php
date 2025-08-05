@@ -238,7 +238,7 @@ class RegisterController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => array(
-                'target' => '0' . $number,
+                'target' => $number,
                 'message' => $message,
             ),
             CURLOPT_HTTPHEADER => array(

@@ -288,7 +288,7 @@ class ScheduleController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => array(
-                'target' => '0' . $number,
+                'target' =>  $number,
                 'message' => "Reminder!!,\n\nPertandingan anda  \n*" . $squad . "* \nakan dimulai pada : \n\nJam : " . $jam . " WITA\ntanggal : " . $tanggal,
             ),
             CURLOPT_HTTPHEADER => array(
