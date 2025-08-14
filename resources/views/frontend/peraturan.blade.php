@@ -52,10 +52,12 @@
                 <section>
                     <h2 class="text-2xl font-semibold mb-2">5. Jadwal dan Kehadiran</h2>
                     <ul class="list-disc pl-6 text-gray-400">
-                        <li>Peserta wajib bersiap didalam lobby 10 menit sebelum pertandingan dimulai.</li>
-                        <li>Keterlambatan lebih dari 15 menit akan dianggap sebagai diskualifikasi.</li>
+                        <li>Peserta wajib hadir 5 menit sebelum pertandingan dimulai.</li>
+                        <li>waktu keterlambatan maksimal 10 menit, lengkap tidak lengkapnya peserta tim pertandingan di
+                            mulai.</li>
+                        <li>Keterlambatan lebih dari 10 menit akan dianggap sebagai kekalahan dalam match tersebut.</li>
                         <li>Jadwal pertandingan dapat berubah sewaktu-waktu dan akan diinformasikan melalui grup Whatsapp
-                            esmi.</li>
+                            resmi.</li>
                     </ul>
                 </section>
 
@@ -74,7 +76,7 @@
                 <section>
                     <h2 class="text-2xl font-semibold mb-2">7. Kontak Panitia</h2>
                     <p class="text-gray-400 leading-relaxed">
-                        Jika ada pertanyaan atau klarifikasi terkait peraturan, peserta dapat menghubungi panitia melalui
+                        Jika ada pertanyaan atau klarifikasi terkait peraturan, peserta dapat menghubungi kami melalui
                         instagram di <span class="text-blue-400"><a href="https://www.instagram.com/kabaena_cup"
                                 class="text-blue-400">@kabaena_cup</a></span>
                         atau melalui grup resmi.

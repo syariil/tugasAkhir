@@ -32,7 +32,6 @@
                                             {{ $schedule->timB }}
 
                                         </h1>
-
                                     </div>
 
                                     <!-- Tim A -->
